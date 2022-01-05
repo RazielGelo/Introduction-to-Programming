@@ -1,0 +1,4 @@
+You are reading this file from Python.
+Hopefully you opened this file in r mode
+because any other mode would have been 
+superfluous.

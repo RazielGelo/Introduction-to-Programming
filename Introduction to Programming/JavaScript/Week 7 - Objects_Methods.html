@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects & Methods</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Objects</h1>
+        <script>
+        	// ==============
+        	// Object Methods
+        	// ==============
+        	
+            const objWithMethods = {
+                name: "Angelo",
+                age: 90,
+                sayName: function() {
+                    console.log("Hello World");
+                },
+                sayObjName: function() {
+                    console.log(this.name);
+                },
+                sayMyParameter: function(para) {
+                    console.log(para + " " + this.age);
+                }
+            };
+
+            console.log(objWithMethods.sayName());
+            console.log(objWithMethods.sayObjName());
+            console.log(objWithMethods.sayMyParameter("I am"));
+
+            // this
+            const objExample = {
+                name: "James",
+                normalFunction: function() {
+                    console.log(this.name); // returns James
+                },
+                arrowFunction: () => {
+                    console.log(this.name); // returns undefined
+                }
+            }
+
+            // Looping with Methods
+
+            for ( let prop in objWithMethods) {
+                if (typeof objWithMethods[prop] !== "function") {
+                    // alerts only properties and no methods
+                    console.log( prop + " " + objWithMethods[prop]);
+                }
+                else {
+                    // logs functions inside objects                    
+                    console.log("\n" + prop + " " + objWithMethods[prop]);
+                }
+            }
+        </script>
+
+        <ol>
+        	<li><em>Fix Object with Methods Errors</em>
+                <br/>
+                Below is an object literal created with mistakes. Fix the errors and console.log the object. Call both of the methods and view the results in the console.
+            </li>
+            <script>
+            	let qNum = 1;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                
+            	const favouriteObj = {
+            		colour: "brown",
+            		movie: "Gladiator",
+            		myFavouriteThings: function() {
+                        console.log("My Fav things are " + colour + " " + movie);
+                    },
+                    arrowFunction: (num) => {
+                        return num * num;
+                    }
+            	}
+
+                console.log(favouriteObj);
+                
+            </script>
+
+
+            <li><em>Create an Object with 2 Methods</em>
+                <br/>
+                Create an object literal that has 1 property (your name) and 2 methods. The first method should console.logs "Hello name" where name is the property value in the object. The second method should console.logs "Goodbye X" where X is a parameter which you can provide to the method. It no parameter is given console.logs "Goodbye stranger". Call both functions in the code.
+            </li>
+            <script>
+                qNum++; // Q2
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                const objWithMethods = {
+                name: "Angelo",
+                sayObjName: function() {
+                    console.log(`Hello ${this.name}.`);
+                },                
+                sayMyParameter: function(para="stranger") {
+                    console.log(`Goodbye ${para}.`);
+                }
+            };
+
+            console.log(objWithMethods.sayObjName());
+            console.log(objWithMethods.sayMyParameter());
+            console.log(objWithMethods.sayMyParameter("Angelo"));
+
+            </script>
+
+
+            <li><em>Add New Method to Existing Object</em>
+                <br/>
+                Using the object you created above, add a new method to it. Have this method accept a parameter and then alert the value of this parameter when called. Call this new method in the code.
+            </li>
+            <script>
+                qNum++; // Q3
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                // objwithMethods.sayMyInputAge = function(age) {
+                //     return age;
+                // }
+
+                // console.log(objWithMethods.sayMyInputAge(35));
+
+               
+
+
+            </script>
+
+
+            <li><em>Loop over Object but Skip Methods</em>
+                <br/>
+                You are provided a simple object below that contains properties and methods. Use a for in loop, to loop through each item and for each, console.log the "key = value". Do this only for the properties. Do not log any of the methods.
+            </li>
+            <script>
+                qNum++; // Q4
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                
+            </script>
+
+
+            <li><em>Loop over Object but Call only Methods</em>
+                <br/>
+                Using the big object provided in the previous question, loop through each item and for each one that is a method, call that method. Also console.log the number of methods that are in the object and the number of non method properties that are in the object.
+            </li>
+            <script>
+                qNum++; // Q5
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                const objWithMethods2 = {
+                    name: "Angelo",
+                    age: 35,
+                    sayName: function() {
+                        console.log("Hello World");
+                    },
+                    sayObjName: function() {
+                        console.log(this.name);
+                    },
+                    sayMyParameter: function(para) {
+                        console.log(para + " " + this.age);
+                    }
+                };
+
+                // let countMethod = 0;
+                // for (let key in objWithMethods2) {
+                //     if (typeof objWithMethods2[key] === "function") {
+
+                //     }
+                // }
+
+
+            </script>
+
+        </ol>
+    </body>
+</html>

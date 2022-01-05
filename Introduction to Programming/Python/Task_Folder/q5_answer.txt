@@ -1,0 +1,2 @@
+I made this with python
+A new file gets created if no file in the directory has the same name as it!

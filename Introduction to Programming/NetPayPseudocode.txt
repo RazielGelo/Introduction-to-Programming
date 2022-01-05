@@ -1,0 +1,28 @@
+    Start
+
+    //Declaration of global variables
+    Float = myGrossPay 
+    Float = myNetPay
+
+    //Below code probably better to use Switch but I forgot
+
+    if myGrossPay < 500
+    Then 
+        myNetPay = myGrossPay
+        print(myNetPay)
+    Else If myGrossPay > 500 and myGrossPay <= 700
+    Then
+        Float = smallTax
+        smallTax = (myGrossPay - 500) x 0.15
+        myNetPay = (myGrossPay + 500) - smallTax
+        print(myNetPay)
+    Else If myGrossPay > 700
+    Then
+        Float = bigTax
+        bigTax = (myGrossPay - 700) x 0.25
+        myNetPay = (myGrossPay + 700) - bigTax
+        print(myNetPay)
+
+    End
+
+50

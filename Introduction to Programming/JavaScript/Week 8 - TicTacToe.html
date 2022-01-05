@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tick Tac Toe</title>
+    <style>
+        body {
+            align-items: center;
+            display: flex;
+            font-family: helvetica;
+            height: 100vh;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            width: 100%;
+        }
+
+        .background-letter {
+            font-family: courier new;
+            font-size: 100px;
+            font-weight: bold;
+            line-height: 0;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .grid {
+            background: white;
+            display: grid;
+            grid-column-gap: 3.5%;
+            grid-row-gap: 3.5%;
+            grid-template-columns: 31% 31% 31%;
+            grid-template-rows: 31% 31% 31%;
+            height: 360px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 360px;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .btn {
+            background: #e4a1ff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 90px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            transition: box-shadow .5s;
+        }
+
+        .btn:hover {
+            border: solid 3px white;
+        }
+
+        .btn:active {
+            border: solid 6px white;
+        }
+
+        #turn {
+            font-size: 50px;
+            position: fixed;
+            text-align: center;
+            top: 50%;
+            margin-top: -280px;
+            z-index: 100;
+        }
+
+        #reset {
+            border-radius: 6px;
+            border: solid 3px black;
+            cursor: pointer;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 230px;
+            padding: 10px 30px;
+            position: fixed;
+            text-align: center;
+            top: 50%;
+            z-index: 100;
+        }
+
+        #reset:active {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="turn">X's Turn</h1>
+    <!-- <span class="background-letter">X</span> -->
+
+    <div class="grid">
+        <button class="btn" onClick="buttonClick(this)"></button>
+        <button class="btn" onClick="buttonClick(this)"></button>
+        <button class="btn" onClick="buttonClick(this)"></button>
+
+        <button class="btn" onClick="buttonClick(this)"></button>
+        <button class="btn" onClick="buttonClick(this)"></button>
+        <button class="btn" onClick="buttonClick(this)"></button>
+
+        <button class="btn" onClick="buttonClick(this)"></button>
+        <button class="btn" onClick="buttonClick(this)"></button>
+        <button class="btn" onClick="buttonClick(this)"></button>
+    </div>
+
+    <button id="reset">Reset</button>
+
+    <script>
+        // ==============
+        // Tic Tac Toe
+        // ==============
+        // Global Variables
+
+        // Test game arrays
+        const test1 = ["X", "O", "X", "O", "X", "", "O", "", "X"]; // X won
+        const test2 = ["O", "O", "X", "O", "", "", "O", "X", "X"]; // O won
+        const test3 = ["X", "O", "X", "X", "O", "", "O", "", "X"]; // No win
+
+
+        // Grabbing HTML components
+        const BODY = document.getElementsByTagName("body")[0];
+        const ALL_BTNS = document.getElementsByClassName("btn");
+
+        // Creating Background X's and O'script
+        //====================================
+        // Create a background X
+        // Left =  number position of left coordinate
+        // top = number positoon of top coordinate
+        function createBackgroundX(left, top) {
+            const xO = returnRandomXO();
+            let xHtml = '<span class="background-letter" style="left:' + left + 'px; top:' + top + 'px">' + xO + '</span>';
+            // Insert the new span element into the body of the webpage
+            BODY.innerHTML += xHtml;
+        }
+
+        function returnRandomXO() {
+            const bgLetters = ["X", "O"];
+            const randomNumber = parseInt(Math.random() * 2);
+            return bgLetters[randomNumber];
+
+        }
+        // Loop over the width of the web page
+        for (let left = 0; left < window.innerWidth; left += 70) {
+
+            // Loop over the height of the webpage
+            for (let top = 0; top < window.innerHeight; top += 70) {
+                createBackgroundX(left, top);
+            }
+
+        }
+
+        const ALL_LETTERS = document.getElementsByClassName("background-letter");
+
+        // Create interval that will change background letter every 60 milliseconds
+        let bgCount = 0;
+        const changeLetterInterval = setInterval(function () {
+            // ALL_LETTERS[0].innerText = "J";
+            // ALL_LETTERS[1].innerText = "O";
+            // ALL_LETTERS[2].innerText = "S";
+            // ALL_LETTERS[3].innerText = "E";
+            // ALL_LETTERS[4].innerText = "P";
+            // ALL_LETTERS[4].innerText = "H";
+            // console.log("This is an interval.");
+            if (bgCount >= ALL_LETTERS.length) {
+                bgCount = 0;
+            }
+
+            // ALL_LETTERS[bgCount].innerText = returnRandomXO();
+
+            if (ALL_LETTERS[bgCount].innerText === "X") {
+                ALL_LETTERS[bgCount].innerText = "O";
+            }
+            else {
+                ALL_LETTERS[bgCount].innerText = "X";
+            }
+
+            bgCount += 1;
+
+        }, 50);
+
+
+        //Game Over
+        //====================================================
+
+        let isTurnX = true;
+        function buttonClick(btn) {
+            // console.log("Button Clicked.");
+            // console.log(btn.innerText);
+            // If it's X's turn add X into the button
+            if (isTurnX === true) {
+                btn.innerText = "X";
+                turn.innerText = "O's Turn";
+                // isTurnX = false;
+
+            }
+            // If it's O's turn add O into the button
+            else {
+                btn.innerText = "O";
+                turn.innerText = "X's Turn";
+                // isTurnX = true;
+            }
+            // Update isTurnX to keep track of player turn
+            isTurnX = !isTurnX;
+            // Check if game has been won
+            checkifWon(getAllBtnValues());
+        }
+        // Get all the innerText values of the buttons
+        // returns [array] of strings, representing X's and O's
+        function getAllBtnValues() {
+            const allBtnsArray = Array.from(ALL_BTNS);
+            const allValues = allBtnsArray.map((btn) => {
+                return btn.innerText;
+            });
+            return allValues;
+        }
+
+        // Check to see if user has won a game
+        // gameArr = [array] of strings 
+        function checkIfWon(gameArr) {
+            console.log("Check winner");
+            console.log(gameArr);
+
+            if (gameArr[0] === gameArr[1] && gameArr[1] === gameArr[2]) {
+                console.log("Winner in top row");
+            }
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

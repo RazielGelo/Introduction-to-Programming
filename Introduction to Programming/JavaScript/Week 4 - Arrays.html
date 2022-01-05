@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Arrays</title>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: item;
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        ol>li {
+            counter-increment: item;
+            margin-bottom: 20px;
+        }
+
+        ol>li:before {
+            margin-right: 10px;
+            content: counter(item);
+            background: crimson;
+            border-radius: 100%;
+            color: white;
+            width: 1.3em;
+            text-align: center;
+            display: inline-block;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Code Arrays</h1>
+
+    <ol>
+        <li><em>Days of the Week</em>
+            <br />
+            Create an array of the seven days of the week. Then create a console log for each day. Each day should
+            appear on a separate line.
+        </li>
+        <script>
+                // Code for Q1
+                // const arrWeekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                // console.log(arrWeekDays[0]);
+                // console.log(arrWeekDays[1]);
+                // console.log(arrWeekDays[2]);
+                // console.log(arrWeekDays[3]);
+                // console.log(arrWeekDays[4]);
+                // console.log(arrWeekDays[5]);
+                // console.log(arrWeekDays[6]);
+        </script>
+
+        <li><em>Months of the Year</em>
+            <br />
+            Create an array containing strings of the names of each month of the year. Then using the array, show a
+            console log that states the 3 months of summer like so "X, Y and Z are the months of summer."
+        </li>
+        <script>
+                // // Code for Q2
+                // const arrMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                // console.log(arrMonths[1] + ", " + arrMonths[2] + ", " + arrMonths[3] + " are the months of Spring.");
+                // console.log(arrMonths[4] + ", " + arrMonths[5] + ", " + arrMonths[6] + " are the months of Summer.");
+                // console.log(arrMonths[7] + ", " + arrMonths[8] + ", " + arrMonths[9] + " are the months of Fall.");
+                // console.log(arrMonths[10] + ", " + arrMonths[11] + ", " + arrMonths[0] + " are the months of Winter.");
+        </script>
+
+        <li><em>How Many Months</em>
+            <br />
+            Extend the code above so that it will console log "There are X months in a year" where X refers to the size
+            of the array.
+        </li>
+        <script>
+                // Code for Q3
+                // const arrMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                // console.log("There are " + arrMonths.length + " months in a year.");
+
+        </script>
+
+        <li><em>Sorting Arrays</em>
+            <br />
+            Arrange the array given below so that it is in alphabetical order A -> Z. Do not do this manually. Use a
+            console.log to view the
+            result.<br><code>const alphaArr = ["Berry", "Abacus", "Elephant", "Dolphin", "Engineer"];</code>
+        </li>
+        <script>
+                // Code for Q4
+                // const alphaArr = ["Berry", "Abacus", "Elephant", "Dolphin", "Engineer"];
+                // console.log("Sorting Arrays", alphaArr.sort());
+        </script>
+
+        <li><em>Check if Element is Inside Array</em>
+            <br />
+            Write code that will check if "Yes" appears inside the array. If it does create an alert that states "Yes
+            appears in position X" where X is the indexed position.<br>
+            <code>const noYesArr = ["No", "No", "No", "No", "No", "Yes", "No", "No"];</code>
+        </li>
+        <script>
+                //Code for Q5
+                // const noYesArr = ["No", "No", "No", "No", "No", "Yes", "No", "No"];
+                // if (noYesArr.indexOf("Yes") === -1 ) {
+                //     console.log("No it doesn't. ");
+                // }
+                // else {
+                //     console.log("Yes it appears in position " + (noYesArr.indexOf("Yes") + 1));
+                // }
+        </script>
+
+        <li><em>Edit Item in Array</em>
+            <br />
+            Use what you have created above and extend the code so that if it finds "Yes" in the array it will change it
+            to "Not Yes Anymore". Use the new array provided.<br>
+            <code>const onlyNoArr = ["No", "No", "Yes", "No", "No", "No", "No", "No"];</code>
+        </li>
+        <script>
+                // Code for Q6
+                // const onlyNoArr = ["No", "No", "Yes", "No", "No", "No", "No", "No"];
+                // if (onlyNoArr.indexOf("Yes")) {
+                //     onlyNoArr[onlyNoArr.indexOf("Yes")] = "Not Yes Anymore";
+                //     console.log("Display edited Element inside array", onlyNoArr);
+                // }
+        </script>
+
+        <li><em>Adding to Array that Already Exists</em>
+            <br />
+            Create an array that holds 4 colour names as strings. Create an alert that says how many elements are inside
+            this array. Then ask the user to add a new colour and then store this value inside the array. Repeat this
+            process one more time so that 2 new colours are added to the array.<br>
+            Then create an alert that will state the new amount of elements inside the array. Finally create a single
+            alert that will state each element inside the array separated by these characters ###.
+        </li>
+        <script>
+            // // Code for Q7
+            // const arrayColors = ["Green", "Red", "Yellow", "Blue"];
+            // alert("This array has " + arrayColors.length + " elements.");
+            // let addColor = prompt("Please add another color that you desire.");
+            // arrayColors.push(addColor);
+            // let addSecondColor = prompt("Please add another color that you desire.");
+            // arrayColors.push(addSecondColor);
+            // alert("Now this array has " + arrayColors.length + " elements.");
+            // let arrayLength = arrayColors.length;
+
+            // for (let i = 0; i < arrayLength; i++) { // Separate Alerts for each element.
+            //     alert("###" + arrayColors[i]);
+            //     break;
+
+            // }
+
+            // for (let i = 0; i < arrayLength; i++) {  // Single alert for each element separated by ###.
+            //     alert(arrayColors.join("###"));
+            //     break;
+            // }
+
+
+        </script>
+
+        <li><em>Removing from Array</em>
+            <br />
+            Remove the first, last and third item from the array. In 2 separate console.logs, list the array in its new
+            form and separately all the elements that were removed.<br>
+            <code>const removeArray = ["first", "second", "third", "fourth", "fifth"];</code>
+        </li>
+        <script>
+                // Code for Q8
+                // const removeArray = ["first", "second", "third", "fourth", "fifth"];                
+                // const removeFirst = removeArray.shift(); // Remove the first element then added into a constant variable.                
+                // const removeLast = removeArray.pop(); // Remove the last elements then added into a constant variable.
+                // const removeThird = removeArray.splice(1,1); // Remove the third element then added into a constant variable. "varArray.splice(Index, Remove, Add);"
+
+                // console.log("Modified Array = " + removeArray);
+                // console.log("The removed items are " + removeFirst + ", " + removeLast + ", " + removeThird); 
+
+        </script>
+
+    </ol>
+    <script>
+        // // Intro to Arrays
+        // const myArr = ["James","Finn","Canada"];
+        // console.log("myArr", myArr);
+        // // Checking length of the array
+        // console.log("myArr.Length", myArr.length);
+        // // Accessing elements inside the array. 
+        // console.log("myArr[0]", myArr[0]);
+        // // Element index not in array is returned as undefined. 
+        // console.log("myArr[0]", myArr[10]);
+
+        // let lastName = myArr[1];
+        // console.log("lastName", lastName);
+
+        // // Modify array elements
+        // myArr[2] = "USA"; // Allowed despite const.
+        // console.log("myArr", myArr);
+
+        // // myArr = 42; // Not allowed because const.
+
+        // // Add to array
+        // myArr.push("Europe", "Asia");
+        // console.log("myArr", myArr);
+        // console.log("myArr.length", myArr.length);
+
+        // // Useful array methods
+        // console.log(myArr.indexOf("Asia"));
+        // console.log("myArr.indexOf('Africa')", myArr.indexOf("Africa"));
+
+        // Sample Object 
+        // const objectName = {
+        //     firstName: "Emil",
+        //     lastName: "Sangil"
+        // }
+        // alert(objectName.firstName + " " + objectName.lastName);
+
+        // Sample Loop - Basic Christmas Tree
+
+        // let ast = "";
+        // let spc = "";
+        // let heightTree = prompt("How high you want for your Christmas Tree?");
+
+        // if(isNaN(heightTree)){
+        //     alert("There is something wrong.");
+        // }
+        // else{
+        //     for (i = 0; i < heightTree; i++) {
+        //         ast = "*";
+        //         spc = " ";
+        //         for (x = 1; x <= i; x++) {
+        //         ast += "**";
+        //         }
+        //         for(x = 1; x <= heightTree - i - 1; x++){
+        //         spc += " ";
+        //         }
+        //         ast = spc + ast;
+        //         console.log(ast);
+        //     }
+        // }
+
+        // function drawTree(h) {
+        //     for (var i = 0; i <= h; i++) {
+        //         var star = '';
+        //         //Changed to start high then decrease
+        //         for (var k = 1; k <= h - i; k++) {
+        //             //shortened to one space
+        //             star += " ";
+        //         };
+        //         for (var j = 0; j <= i; j++) {
+        //             //Added space so there is an odd number
+        //             //of symbols and the star above fits
+        //             //the space
+        //             star += " *";
+        //         };
+        //         //Moved into the loop
+        //         console.log(star);
+        //     };
+        // };
+
+        // drawTree(5);
+        const tree = { f1:"     *", f2:"    ***", f3:"   *****", f4:"  *******", f5:" *********" };
+
+        let txt = "";
+        for (let x in tree) {
+            txt += tree[x] + "\n";
+        }
+        console.log(txt);
+
+    </script>
+</body>
+
+</html>

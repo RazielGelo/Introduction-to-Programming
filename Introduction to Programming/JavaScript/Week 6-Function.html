@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Functions 1</title>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: item;
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        ol>li {
+            counter-increment: item;
+            margin-bottom: 20px;
+        }
+
+        ol>li:before {
+            margin-right: 10px;
+            content: counter(item);
+            background: crimson;
+            border-radius: 100%;
+            color: white;
+            width: 1.3em;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Functions 1</h1>
+
+    <ol>
+        <li><em>Hello World</em>
+            <br />
+            Create a simple function that console.logs "Hello World". Without using a loop, invoke/call this function 3
+            times.
+        </li>
+        <script>
+            // hello();
+            // function hello () {
+            //     console.log("Hello World");
+            //     console.log("Hello World");
+            //     console.log("Hello World");
+            // }
+
+        </script>
+
+
+        <li><em>Goodnight World</em>
+            <br />
+            Create a simple function that console.logs "Goodnight World". This time use a for loop to <em>call</em> the
+            function ten times. Do not put the loop inside the function.
+        </li>
+        <script>
+                // for (var i = 0; i < 10; i++) {
+                //     goodnight();
+                // }
+                // function goodnight () {
+                //     console.log("Goodnight World");
+                // }
+
+        </script>
+
+
+        <li><em>Name and Address</em>
+            <br />
+            Create 2 functions: one that creates a console.log saying "My name is ..." and the other a console.log that
+            says "I live in ...". Call both of these functions with the name function happening first.
+        </li>
+        <script>
+                // call();
+                // function call () {
+                //     myName();
+                //     myAddress();
+                // }
+                // function myName () {
+                //     console.log("My name is  Angelo Guerra");
+                // }
+                // function myAddress () {
+                //     console.log("I currently live in Surrey, BC Canada.");
+                // }
+
+        </script>
+
+
+        <li><em>Name and Address Called Differently</em>
+            <br />
+            Do the same again however this time call the address function inside the name function and do it in such a
+            way that the address log comes first. Remember you can call a function inside of another function.
+        </li>
+        <script>
+                // myName();
+                // function myName () {
+                //     myAddress();
+                //     console.log("My name is  Angelo Guerra");
+                // }
+                // function myAddress () {
+                //     console.log("I currently live in Surrey, BC Canada.");
+                // }
+
+        </script>
+
+
+        <li><em>Choose Which Function to Call</em>
+            <br />
+            Create 2 functions:<br>one that logs "My favourite fruit is ..." and then logs "It is grown in ...".<br>The
+            second function should log "My favourite music is ..." and then logs "... plays this kind of
+            music".<br><br>Then use a confirm box to only call one of these functions (Fruit or Music) based on the
+            user's reaction e.g. ("OK = fruit, Cancel = music").
+        </li>
+        <script>
+            // let choice = confirm("Press okay for Fruit. Press Cancel for Music.");
+            // if (choice) {
+            //     fruit();
+            // }
+            // else {
+            //     music();
+            // }
+            // function fruit() {
+            //     console.log("My favorite fruit is Strawberry.");
+            //     console.log("It is mostly grown in cold places.");
+            // }
+            // function music() {
+            //     console.log("My favorite music is the alternative genre.");
+            //     console.log("Lifehouse plays this kind of music.");
+            // }
+
+        </script>
+
+
+        <li><em>Name Analysis</em>
+            <br />
+            Create a single function that does the following. Ask the user to type their name into a prompt. Then ask
+            the user how old they are using a prompt. Check to see how many characters are in the name. If the name has
+            more than 10 characters consider the name as being long. In a single console.log print the following
+            message<br><br>
+            "Hello X how are you today?<br>
+            You have a long/short name which has X characters<br>
+            You are X years old and so were born in the year XXXX"<br><br>
+            Call this function once.
+        </li>
+        <script>
+//             info();
+//             function info() {
+//                 let name = prompt('Enter your name.');
+//                 let age = prompt('Enter your age.');
+//                 let nameLength = name.length;
+//                 let currentDate = new Date();
+//                 let yearBorn = currentDate.getFullYear() - age;
+//                 if (nameLength > 10) {
+//                     console.log(`Hello ${name}. How are you today?
+// You have a long name which has ${nameLength} characters.
+// You are ${age} years old and so were born in the year ${yearBorn}.`);
+//                 }
+//                 else {
+//                     console.log(`Hello ${name}. How are you today?
+// You have a short name which has ${nameLength} characters.
+// You are ${age} years old and so were born in the year ${yearBorn}.`);
+//                 }
+//             }
+
+
+        </script>
+    </ol>
+
+    <script>
+            // Question 1 - For Loop - Output 1-10
+            for (let i = 1; i < 11; i++) {
+                console.log(i);
+            }
+            // Question 2 - Calling an Element from an Array - Call 2nd Element
+            const fruits = ["apple","banana","orange"];
+            console.log(fruits[1]);
+            // Question 3 - If Else statement
+            let bool = true;
+            if (bool) {
+                console.log("Hello World");
+            }
+            else {
+                console.log("Goodbye");
+            }
+            // Question 4 - Function with Parameter
+            function welcomer(name) {
+                console.log(`Welcome ${name}`);
+            }
+
+            welcomer("Angelo");
+
+    </script>
+</body>
+
+</html>

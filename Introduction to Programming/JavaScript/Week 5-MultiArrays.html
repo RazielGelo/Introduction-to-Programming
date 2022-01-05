@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Multidimensional Arrays</title>
+    <style>
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: item;
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        ol>li {
+            counter-increment: item;
+            margin-bottom: 20px;
+        }
+
+        ol>li:before {
+            margin-right: 10px;
+            content: counter(item);
+            background: crimson;
+            border-radius: 100%;
+            color: white;
+            width: 1.3em;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Multidimensional Arrays</h1>
+
+    <ol>
+        <li><em>Log A, C, E, H and I</em>
+            <br />
+            Create 5 separate console.logs to log the following letters that are elements inside the mulitdimensional
+            array - A, C, E, H, I. No need to use loops.<br>
+            <code>const multiArr1 = [ ["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"] ];</code>
+        </li>
+        <script>
+            console.log("Q1.");
+            const multiArr1 = [
+                ["A", "B", "C"],
+                ["D", "E", "F"],
+                ["G", "H", "I"]
+            ];
+            console.log(multiArr1[0][0]);
+            console.log(multiArr1[0][2]);
+            console.log(multiArr1[1][1]);
+            console.log(multiArr1[2][1]);
+            console.log(multiArr1[2][2]);
+
+        </script>
+
+
+        <li><em>Log All Elements Separately</em>
+            <br />
+            Create 2 nested for loops to console.log all of the elements inside the multidimensional array. Log each one
+            separately.<br>
+            <code>const multiArr2 = [ ["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"] ];</code>
+        </li>
+        <script>
+            console.log("Q2.");
+            const multiArr2 = [
+                ["A", "B", "C"],
+                ["D", "E", "F"],
+                ["G", "H", "I"]
+            ];
+
+            for (let outerArr = 0; outerArr < multiArr2.length; outerArr++) {
+                for (let innerArr = 0; innerArr < multiArr2[outerArr].length; innerArr++) {
+                    console.log(multiArr2[outerArr][innerArr]);
+                }
+
+            }
+        </script>
+
+
+        <li><em>Log All Elements in Single Log</em>
+            <br />
+            Create 2 nested loops to console.log all of the elements inside the multidimensional array in a single
+            console.log message.<br>
+            <code>const multiArr3 = [ ["A", "B"], ["C", "D", "E", "F", "G"], ["H", "I", "J"] ];</code>
+        </li>
+        <script>
+            console.log("Q3.");
+            const multiArr3 = [
+                ["A", "B"],
+                ["C", "D", "E", "F", "G"],
+                ["H", "I", "J"]
+            ];
+            let text = "";
+            for (let outerArr = 0; outerArr < multiArr3.length; outerArr++) {
+                for (let innerArr = 0; innerArr < multiArr3[outerArr].length; innerArr++) {
+                    text += multiArr3[outerArr][innerArr];
+
+                }
+
+            }
+            console.log(text); // Put the console log outside the for loop so it appears in one console log. 
+        </script>
+
+
+        <li><em>Create MultiArray and Log all Cities</em>
+            <br />
+            You are given 4 arrays named after countries containing strings which represent cities. Place the arrays
+            inside the <code>worldArr</code> to create a multidimensional array. Use this to log all of the cities
+            present in the arrays.
+        </li>
+        <script>
+            console.log("Q4.");
+            const canadaArr = ["Vancouver", "Toronto", "Victoria"],
+                koreaArr = ["Seoul", "Busan", "Incheon"],
+                philippinesArr = ["Manila", "Quezon City"],
+                tunisiaArr = ["Tunis"];
+
+            const worldArr = [];
+
+
+
+            // Below code insert multiple arrays into one array
+
+            // for (let innerArr = 0; innerArr < canadaArr.length; innerArr++) {
+            //     worldArr.push(canadaArr[innerArr]);
+            // }
+            // for (let innerArr = 0; innerArr < koreaArr.length; innerArr++) {
+            //     worldArr.push(koreaArr[innerArr]);
+            // }
+            // for (let innerArr = 0; innerArr < philippinesArr.length; innerArr++) {
+            //     worldArr.push(philippinesArr[innerArr]);
+            // }
+            // for (let innerArr = 0; innerArr < tunisiaArr.length; innerArr++) {
+            //     worldArr.push(tunisiaArr[innerArr]);
+            // }
+            // console.log(worldArr);
+
+            //Below code use the straightforward push for the other arrays. 
+
+            // worldArr.push(canadaArr, koreaArr, philippinesArr, tunisiaArr);
+
+            // let worldText = "";
+            // for (let outerArr = 0; outerArr < worldArr.length; outerArr++) {
+            //     for (let innerArr = 0; innerArr < worldArr[outerArr].length; innerArr++) {
+            //         worldText += worldArr[outerArr][innerArr] + ", ";
+
+            //     }
+
+            // }
+            // console.log(worldText);
+
+            // Below code is the actualy and FINAL Solution for this question. This is the most straightfoward solution. 
+            let worldText = "";
+            worldArr.push(canadaArr, koreaArr, philippinesArr, tunisiaArr);
+            for (let outerArr = 0; outerArr < worldArr.length; outerArr++) {
+                //console.log(worldArr[outerArr]);
+                worldText += worldArr[outerArr] + "\n";
+
+            }
+            console.log(worldText);
+
+        </script>
+
+        <li><em>Create MultiArray and Log all Cities 2</em>
+            <br />
+            Extend the code above to so that each city is preceded by a number and a period representing the order in
+            which they are console.logged e.g. 1. Vancouver, 2. Toronto, 3. Victoria, 4. Seoul etc. Create new loops
+            below to show these logs. No need to create the array again.
+        </li>
+        <script>
+            console.log("Q5.");
+            // This outputs everything into separate logs with proper number order.
+            // worldArr.push(canadaArr, koreaArr, philippinesArr, tunisiaArr);
+
+            // let num = 0;
+            // let worldText = "";
+            // for (let outerArr = 0; outerArr < worldArr.length; outerArr++) {
+            //     for (let innerArr = 0; innerArr < worldArr[outerArr].length; innerArr++) {
+            //         num += 1;
+            //         console.log(num + "." + worldArr[outerArr][innerArr]);
+            //     }
+
+            // }
+
+
+
+        </script>
+
+
+        <li><em>Create MultiArray of Months</em>
+            <br />
+            Create 4 arrays holding 3 strings each. These arrays should represent each season and their strings should
+            represent each month in that season. Add these arrays as elements into a new multidimensional array which
+            you should name "year". Create 4 separate console.logs that should read "Array 1 has: 1. March, 2. April, 3.
+            May". "Array 2 has: 1. June, 2. July, 3. August" etc.
+        </li>
+        <script>
+            console.log("Q6.");
+            const
+                Winter = ["December", "January", "February"],
+                Spring = ["March", "April", "May"],
+                Summer = ["June", "July", "August"],
+                Fall = ["September", "October", "November"];
+
+            const year = [];
+            year.push(Winter, Spring, Summer, Fall);
+
+            let msg = "";
+
+            for (let seasons = 0; seasons < year.length; seasons++) {
+
+                msg += "Array " + (seasons + 1) + " has: "; // To output number of Array representation. Also this is a continuous variable. 
+
+
+                for (let months = 0; months < year[seasons].length; months++) {
+                    msg += (months + 1) + ". " + year[seasons][months] + " "; // To output the number of the months then adds to the previous message variable. 
+                }
+                msg += "\n"; // adds line break to make things looks neater. 
+            }
+            console.log(msg);
+            
+
+        </script>
+
+    </ol>
+
+    <script>
+        //
+            // const multiArray = [
+            //     [1,2,3],
+            //     [4,5,6],
+            //     [7,8,9],
+            // ]
+            // console.log(multiArray[0][0]);
+
+            // // for (let i = 0; i<multiArray.length; i++) {
+            // //     for (let index = 0; index < multiArray[i].length; index++) {
+            // //         console.log(multiArray[i][index]);
+
+            // //     }
+
+            // // }
+
+            // for (let arr of multiArray) {
+            //     for (let item of arr) {
+            //         console.log(item);
+
+            //     }
+
+            // }
+    </script>
+</body>
+
+</html>

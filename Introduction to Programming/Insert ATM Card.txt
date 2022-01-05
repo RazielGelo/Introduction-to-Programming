@@ -1,0 +1,20 @@
+Insert ATM Card
+
+Input PIN Number
+
+If Input PIN Number = False 
+    Input PIN Number
+Else
+    Select Withdraw
+    Select Chequing Account
+
+Input Withdraw Amount($50)
+
+If ATM Machine have enough cash = False
+Then 
+    Go to different bank or ATM Machine
+Else 
+    Get your Money
+
+Get your ATM Card and Receipt
+    

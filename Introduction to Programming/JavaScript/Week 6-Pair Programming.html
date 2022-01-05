@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pair Programming</title>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        h1 {
+            color: crimson;
+        }
+
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        li {
+            margin: 20px;
+        }
+
+        ol {
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        ol>li>ol>li {
+            margin: 10px;
+        }
+
+        p {
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul>li {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pair Programming</h1>
+
+    <p>
+        Pair programming is a software development technique in which two programmers work together at the same
+        workstation on the same project. One, the <strong>driver</strong>, writes code while the other, the
+        <strong>observer</strong> or navigator, reviews each line of code as it is typed in. The two programmers switch
+        roles frequently. Talking, discussing and explaining are highly encouraged.
+    </p>
+
+    <ol>
+
+        <li><em>Number Functions</em>
+            <br>
+            Write code and use functions that take in a single array and checks to see that all items are numbers. If
+            they are, your code should produce the following console.log:<br>
+            "There are X numbers in this array.
+            The total sum of all numbers is Y.
+            The average of all numbers is Z.
+            The largest number in the array is W"<br><br>
+            If the array contains an item that is not a number, your code should just console.log "ERROR".<br><br>
+            Try to use multiple functions in your code to have it organised better. For instance one function could
+            calculate and return the sum of the array, another code check to see if the array contains numbers and
+            return true or false etc. Then one main function could call these to perform the program.
+        </li>
+
+        <script>
+            // ====================
+            // Pair Programming
+            // ====================
+            const testArr1 = [20, 30, 40, 50];
+            const testArr2 = [200, 3, 13, 22, 29, 35, 121, 78, 80, 91];
+            const testArr3 = [20, 30, 40, "James", 12];
+
+            // Output using only functions
+
+            function checkItems(arr1) {
+                let msg = "",
+                    arrLength = arr1.length,
+                    newline = "\n",
+                    sum = arr1.reduce((a, b) => a + b),
+                    ave = sum / arrLength,
+                    max = Math.max.apply(null, arr1);
+                msg = !arr1.some(isNaN) ?
+                    `There are ${arrLength} numbers in this array.
+The total sum of all numbers is ${sum}.
+The average of all numbers is ${ave}.
+The largest number in the array is ${max}` : "ERROR.";
+                console.log(msg);
+            }
+            checkItems(testArr1);
+            checkItems(testArr2);
+            checkItems(testArr3);
+
+
+
+            // Function for checking if array contains any other value aside from numbers. 
+
+            // checker(testArr1);
+            // checker(testArr2);
+            // checker(testArr3);
+
+
+            // function checker(arr1) {
+            //     let msg = "";
+            //     msg = arr1.some(isNaN) ? "ERROR" : "OK";
+            //     console.log(msg);
+            // }
+
+
+        </script>
+    </ol>
+</body>
+
+</html>

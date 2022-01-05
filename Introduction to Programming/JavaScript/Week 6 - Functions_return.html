@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Functions 3 Return</title>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: item;
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        ol>li {
+            counter-increment: item;
+            margin-bottom: 20px;
+        }
+
+        ol>li:before {
+            margin-right: 10px;
+            content: counter(item);
+            background: crimson;
+            border-radius: 100%;
+            color: white;
+            width: 1.3em;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Functions 3 with <em>return</em></h1>
+    <p>This section tests you to use the <code>return</code> keyword with functions in order to write functions that
+        return a value. In order to test your functions out that return values (instead of console.logging values), open
+        the console window (shift + ctrl + i), type the name of the function and include parameters if required. This
+        should output the result directly in the console if successful.</p>
+    <ol>
+        <li><em>Doctor</em>
+            <br />
+            Write a function that takes in two parameters (firstName and lastName) which are strings.
+            <strong>return</strong> the full name with the "Dr." title placed in front.
+        </li>
+        <script>
+            function fullName(firstName, lastName) {
+                return `Dr. ${firstName} ${lastName}`;
+            }
+            console.log(fullName("Joseph", "Guerra"));
+            
+
+        </script>
+
+
+        <li><em>Doctor EXTENDED</em>
+            <br />
+            Using the function you made above, modify the console.log below so that the greeting shows your name with
+            the Dr. prefix.
+        </li>
+        <script>
+            console.log("Hello " + fullName("Joseph", "Guerra") + " and welcome to the hospital");
+        </script>
+
+
+        <li><em>Area of Rectangle</em>
+            <br />
+            Write a function that takes in two parameters (width and height) which are numbers representing the width
+            and height of a rectangle. <strong>return</strong> the area of the rectangle.
+        </li>
+        <script>
+            function areaRectangle(width, height) {
+                return width * height;
+            }
+
+        </script>
+
+
+        <li><em>Perimeter of Rectangle</em>
+            <br />
+            Write a function that takes in two parameters (width and height) which are numbers representing the width
+            and height of a rectangle. <strong>return</strong> the perimeter of the rectangle. This is length of the
+            rectangle multiplied by 2, plus the height of the rectangle multiplied by 2.<br>Use default parameter values
+            of 0 in case user forgets to include values for parameters.
+        </li>
+        <script>
+            function perimeterRect(width = 0, height = 0) {
+                return 2 * (width + height);
+            }
+
+        </script>
+
+
+        <li><em>Using Other Functions inside of Function</em>
+            <br />
+            Create a single function that takes in two parameters (width and height) which are numbers representing the
+            width and height of a rectangle. In this function, make use of the previous two functions which
+            <strong>returns</strong> the area and perimeter of a rectangle. In a single console log output "Height = X,
+            Width = Y, Area = Z, Perimeter = W". Use default values of 0 for the parameters in this function.
+        </li>
+        <script>
+            function inputValue(width = 0, height = 0) {
+                let area = areaRectangle(width, height);
+                let perimeter = perimeterRect(width, height);
+                console.log(`Height = ${height}, Width = ${width}, Area = ${area}, Perimeter = ${perimeter}`);
+
+            }
+
+        </script>
+
+
+        <li><em>Break String Into Array</em>
+            <br />
+            Create a function that takes in a string as a parameter, uppercases all the letters and
+            <strong>returns</strong> an array with each uppercase letter being an item in that array.<br>You should
+            check out the JavaScript string method called <code>split()</code> to help you in this regard. Some test
+            strings have been provided
+        </li>
+        <script>
+            let testStr1 = "apple";
+            let testStr2 = "banana";
+            // splitString(testStr1);
+            // splitString(testStr2);
+            function splitString(value = "") {
+                return value.toUpperCase().split('');
+            }
+
+
+        </script>
+
+
+        <li><em>String Vowel Checker</em>
+            <br />
+            Create a function that takes in a single string parameter. First check to make sure that the parameter is a
+            string. If it is not a string return <code>null</code>. You may want to look up <strong>typeof</strong> in
+            JavaScript to help you here. If it is a string check to see if the first letter is a vowel. If it is
+            <strong>return</strong> true. If it isn't return false.
+        </li>
+        <script>
+            // function vowelChecker(word) { 
+            //     if (typeof word === "string") {
+            //         let firstUpper = word.charAt(0).toUpperCase();
+            //         const vowels = ["A","E","I","O","U"];
+            //         // let container = (firstUpper === "A" || firstUpper === "E" || firstUpper === "I" || firstUpper === "O" || firstUpper === "U") ? "True" : "False";
+            //         let container = word.includes(firstUpper) ? true : false; // shorter code. 
+            //         console.log(container);
+            //     }
+            //     else {
+            //         return "null";
+            //     }
+            // }
+
+        </script>
+
+
+        <li><em>String Vowel Checker EXTENDED</em>
+            <br />
+            Create a new function that doesn't take in a parameter. This function should ask the user what their name is
+            using a prompt. Store their name in a variable and then use the function you created in the previous
+            question to check if the name starts with a vowel. Console.log the following based on the returned value:
+            "Your names starts with a vowel" or "Your name starts with a consonant" or "Your name isn't a string".
+        </li>
+        <script>
+            function vowelChecker(word) {
+                if (typeof word === "string") {
+                    let firstUpper = word.charAt(0).toUpperCase();
+                    const vowels = ["A", "E", "I", "O", "U"];
+                    if (vowels.includes(firstUpper)) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    return "null";
+                }
+            }
+
+            function askUsername() {
+                let username = prompt("Please enter your name.");
+                switch (vowelChecker(username)) {
+                    case "null":
+                        console.log("Your name isn't a string.");
+                        break;
+                    case true:
+                        console.log("Your names starts with a vowel.");
+                        break;
+                    case false:
+                        console.log("Your name starts with a consonant.");
+                        break;
+                    default:
+                        console.log("You've inserted unrecognizable value.");
+                }
+
+            }
+
+
+
+        </script>
+
+
+        <li><em>Last Item in Array</em>
+            <br />
+            Create a function that takes in an array as a parameter. <strong>return</strong> the last element inside the
+            array</em>
+        </li>
+        <script>
+            // Use these array variables to test your code
+            const testArr1 = [1, 2, 3, 4, 5, 6];
+            const testArr2 = ["A", "B", "C"];
+
+            function lastItem(arr1) {
+                let length = arr1.length;
+                let lastElement = arr1[length - 1];
+                return lastElement;
+            }
+
+
+        </script>
+
+
+        <li><em>Modify Array</em>
+            <br />
+            Create a function that takes in a single parameter that is an array containing strings. In this function,
+            <code>return</code> a new array that contains all the strings uppercased.
+        </li>
+        <script>
+            const testArr3 = ["vancouver", "kelowna", "victoria", "richmond", "burnaby", "surrey"];
+
+            function modify(arr1) {
+                const upperCased = [];
+                for (let elem of arr1) {
+                    upperCased.push(elem.toUpperCase());
+                }
+
+                return upperCased;
+
+            }
+
+
+
+
+        </script>
+
+
+        <li><em>Filter Array</em>
+            <br />
+            Create a function that takes in one parameter that is an array containing strings. In this function,
+            <code>return</code> a new array that contains only items from the original array that start with a capital
+            letter. Make use of a function you already created to help you here.
+        </li>
+        <script>
+            const testArr4 = ["Apples", "Bat", "Car", "elephant", "walrus", "Igloo", "uniform", "bear"];
+
+            const filtered = testArr4.filter(startsWithCapital);
+
+            console.log(filtered);
+
+            function startsWithCapital(arr1) {
+                for (let elem of arr1) {
+                    if (elem.charAt(0) === elem.charAt(0).toUpperCase()) {
+                        return elem;
+                    }
+                    // if (/[A - Z]/.test(elem.charAt(0))) {
+                    //     return elem;
+                    // }
+
+                }
+
+            }
+        </script>
+
+
+        <li><em>Count the Number of Words in Sentence that Begin with Vowel</em>
+            <br />
+            You are given a string variable which is a sentence containing a bunch of words. Use the functions that you
+            have created above to console.log the following: "There are X words in the sentence that begin with a
+            vowel". You may want to look up the JavaScript method called <code>split()</code> to help you in this
+            regard.
+        </li>
+        <script>
+            const sentence = "The affluent brown and endearing fox demanded that his Irish friend jump over the tall fence. Although he was surprised by the unusual request from his canine pal, the friend complied.";
+
+        </script>
+
+
+        <li><em>Count the Votes and return an Array</em>
+            <br />
+            Create a function that takes in a single array as a parameter. An array called voteArr has been provided to
+            test. In the function, count the number of "Yes" and "No" votes inside of the array. <strong>return</strong>
+            an array that contains the number of Yes votes as the first item and the number of No votes as the second
+            item in this returned array.
+        </li>
+        <script>
+            const voteArr = ["Yes", "Yes", "Yes", "No", "Yes", "Yes", "Maybe", "No", "No"];
+
+        </script>
+
+        <li><em>Number Function</em>
+            <br />
+            Create a separate function for each of the following. These functions must take in a single parameter which
+            is an array:
+            <ul>
+                <li>Checks to see if all items in array are numbers</li>
+                <li><strong>returns</strong> the sum of all numbers in array</li>
+                <li><strong>returns</strong> the average of all numbers in array</li>
+                <li><strong>returns</strong> the largest number in array</li>
+            </ul>
+            Use all of these functions to console.log<br><br>
+            "There are X numbers in this array.<br>
+            The total sum of all numbers is Y.<br>
+            The average of all numbers is Z.<br>
+            The largest number in the array is W"
+        </li>
+        <script>
+
+        </script>
+    </ol>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
