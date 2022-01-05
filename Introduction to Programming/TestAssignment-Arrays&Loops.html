@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Assignment</title>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        h1 {
+            color: crimson;
+        }
+
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        li {
+            margin: 20px;
+        }
+
+        ol {
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        ol>li>ol>li {
+            margin: 10px;
+        }
+
+        p {
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul>li {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Introduction to Programming TEST Assignment</h1>
+
+    <p>
+        Complete the following tasks. Name your html file <span
+            style="font-size:1.05rem; color:blue;"><em>Name</em>_Assignment_2</span> and submit it before the deadline.
+        <br>
+        <em>60%</em> of the marks will go to successfully completing the tasks free of errors.
+        <br>
+        <em>20%</em> of the marks will go to how well you comment your code. This also incorporates good naming
+        conventions for variables & <strong>proper formatting/organisation of your code</strong>.
+        <br>
+        <em>20%</em> of the marks will go to how efficient your code is using the methods you have learned up to this
+        point.
+    </p>
+
+    <ol>
+
+        <li><em>Student Test Results</em>
+            <br>
+            The test results of six different students are presented below. Each student has gotten a number score
+            ranging between 0 and 100 from 5 of their most recent tests.
+            <br>
+            Student 1: 70.5, 88.0, 91.0, 85.5, 66.5
+            <br>
+            Student 2: 90.5, 92.5, 90.0, 95.0, 87.5
+            <br>
+            Student 3: 75.5, 75.0, 77.0, 75.5, 81.5
+            <br>
+            Student 4: 55.5, 68.0, 71.5, 85.0, 66.0
+            <br>
+            Student 5: 70.5, 88.0, 91.0, 85.5, 66.5
+            <br>
+            Student 6: 80.5, 87.0, 57.0, 75.5, 64.0
+            <br>
+            <br>
+            Arrange the data in a suitable format. Write code that prints a console.log for each student that states
+            "Student X has an average score of Y" where X is the student number and Y is the average or mean of the
+            students' test results fixed to 2 decimal points. After this, print a single console.log that says "Student
+            X has gotten a score of less than 60% => Z" where Z is the score that is below 60. Only do this if the
+            student has gotten a test result below 60.
+        </li>
+
+        <script>
+            // ====================
+            // 1.) Student Results
+            // ====================
+
+            // Arrange the data
+            const student1 = [70.5, 88.0, 91.0, 85.5, 66.5],
+                student2 = [90.5, 92.5, 90.0, 95.0, 87.5],
+                student3 = [75.5, 75.0, 77.0, 75.5, 81.5],
+                student4 = [55.5, 68.0, 71.5, 85.0, 66.0],
+                student5 = [70.5, 88.0, 91.0, 85.5, 66.5],
+                student6 = [80.5, 87.0, 57.0, 75.5, 64.0];
+
+            // Create multidimensional array of all student results
+            const allResults = [];
+            allResults.push(student1, student2, student3, student4, student5, student6);
+            // console.log(allResults[0]);
+            // console.log(allResults[1]);
+            // console.log(allResults[2]);
+            // console.log(allResults[3]);
+            // console.log(allResults[4]);
+            // console.log(allResults[5]);
+
+            let studentNumber = 1; // Increment student number
+            let studentLess60message = "";
+            // Loop through each student
+            for (let students of allResults) {
+                let sum = 0;
+                // Loop through each student result
+                for (let grades of students) {
+                    sum += grades;
+
+                    // Check to see if student has scored less than 60
+                    if (grades < 60) {
+                        studentLess60message += "Student " + studentNumber + " has gotten a score of less than 60% => " + grades + "\n";
+                    }
+                } // End Inner loop
+                // Calculate average score of student 
+                let avg = sum / students.length;
+
+                console.log("Student " + studentNumber + " average = " + avg.toFixed(2));
+
+                studentNumber += 1;
+            } // End Outer loop
+            // Mention students that have grades less than 60. 
+            console.log(studentLess60message);
+        </script>
+
+    </ol>
+</body>
+
+</html>

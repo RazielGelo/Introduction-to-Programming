@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment 1</title>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        h1 {
+            color: crimson;
+        }
+
+        em {
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+
+        li {
+            margin: 20px;
+        }
+
+        ol {
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        p {
+            width: 700px;
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul>li {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<h1>Introduction to Programming Assignment 1</h1>
+
+<p>
+    Complete the following tasks.
+    <br>
+    <em>60%</em> of the marks will go to successfully completing the tasks free of errors.
+    <br>
+    <em>20%</em> of the marks will go to how well you comment your code. This also incorporates good naming conventions
+    for variables.
+    <br>
+    <em>20%</em> of the marks will go to how efficient your code is using the methods you have learned to this point.
+</p>
+
+<ol>
+
+    <li><em>Complicated Tax Calculator</em>
+        <br />
+        In a previous class you wrote pseudocode and flow charts to calculate tax. This problem is very similar to that
+        but may contain some changes and additions.<br>
+        Write code that will ask the user, using a prompt, what their monthly gross income is. If the user doesn't type
+        in a number tell them their mistake with an alert and do not proceed with the calculation.
+        <ul>
+            <li>If the user earns less than or equal to 500 dollars the tax taken is 0 and they are in the low tax
+                bracket. Only for these people should you do the following. Ask the user how many children they have.
+                For each child that they have, give them 10 dollars in child benefits. If the user does not type in a
+                number they get 0 dollars in child benefits.</li>
+            <li>If the user earns more than 500 dollars but less than or equal to 700 they are in the medium tax
+                bracket. Tax taken here should be 15% of any sum that is over 500.</li>
+            <li>If the user earns more than 700 dollars they are in the high tax bracket. Tax taken here should be 15%
+                of the sum that is over 500 but less than or equal to 700 and 25% of everything over 700.</li>
+        </ul>
+        The final result should show in a single alert the user's gross income, the tax bracket (low, medium or high),
+        total tax, child benefits and net income (gross + child benefits - tax).
+
+        <p>Gross Salary = 400, Number of Kids = 2, Bracket = Low, Net Income = 420<br>
+            Gross Salary = 620, Bracket = Medium, Net Income = 602<br>
+            Gross Salary = 900, Bracket = High, Net Income = 820.15</p>
+    </li>
+
+    <script>
+        // ====================
+        // 1.) Complicated Tax Calculator
+        // ====================
+
+        const userSalary = parseFloat(prompt("Please type in your gross monthly salary."));
+        let bracket = ""; // Text Bracket Variable
+        let tax = 0; // Tax Variable
+        let netPay = 0; // Net Income Variable
+        if (isNaN(userSalary)) { // This is for validation, to catch if the user doesn't input a proper value. 
+            alert("You didn't enter a correct value for your salary. Please enter a number.");
+        }
+        else {
+            if (userSalary <= 500) { // Low Tax Bracket  - Prompts for number of children for child benefits                
+                let numChild = parseInt(prompt("Please enter how many children you have, please input 0 if none.")); // Parsed Int since value should be whole number for children. 
+                if (isNaN(numChild) || numChild == "") { // Validation to catch if the user didn't input a value for number of children.
+                    alert("You didn't enter a proper value or you didn't enter any input.");
+                }
+                else {
+                    tax = 0;
+                    bracket = "Low";
+                    netPay = userSalary + (numChild * 10) - tax;
+                    alert("Gross Salary = " + userSalary + "\nTax Bracket = " + bracket + "\nNumber of Children = " + numChild + "\nNet Income = " + netPay);
+                    // Used \n to break line inside the alert box. 
+                }
+
+            }
+            else if (userSalary > 500 && userSalary <= 700) { // Medium Tax Bracket
+                tax = (userSalary - 500) * 0.15;
+                bracket = "Medium";
+                netPay = userSalary - tax;
+                alert("Gross Salary = " + userSalary + "\nTax Bracket = " + bracket + "\nNet Income = " + netPay);
+            }
+            else { // High Tax Bracket
+                tax += (userSalary - 700) * 0.25;
+                tax += 199 * 0.15;
+                bracket = "High";
+                netPay = userSalary - tax;
+                alert("Gross Salary = " + userSalary + "\nTax Bracket = " + bracket + "\nNet Income = " + netPay);
+            }
+
+        }
+
+    </script>
+
+    <li><em>Person's Details</em>
+        <br>
+        Ask a user to type in their first and last name into a single prompt separated by a space. You can assume the
+        user will do this correctly.<br>
+        In a single alert write the following message where the square brackets represents values:
+        <ul>
+            <li>Hello [first and last name of user].</li>
+            <li>Your name is [number of letters in name] letters long.</li>
+            <li><i>depending on whether this is true or not show the following output</i> Your name begins with a vowel
+                which is the letter [first letter of their name in capital letter]. <i>or</i> Your name beings with a
+                consonant which is the letter [first letter of their name in capital letter].</li>
+            <li>The last letter of your name is [last letter of their last name in lower case].</li>
+        </ul>
+    </li>
+
+    <script>
+        // =================== 
+        // 2.) Person's Details
+        // ===================
+        let entName = prompt("Please strictly enter your First Name and Last Name separated by a space."); // Prompt to enter First Name and Last Name - Assuming user will follow instructions properly. 
+        let firstLetterOfName = entName.charAt(0); // Outputs first letter of the inputted name. 
+        let lastLetterOfName = entName.charAt(entName.length - 1); // Outputs last letter of the inputted name. 
+        // let firstLetterLastName = entName.charAt(entName.indexOf(" ") + 1); Practice code on getting specific position using indexOf function. 
+        // alert("Your name is " + parseInt(entName.length - 1) + " letters long."); - code to output number of letters in name excluding space. 
+        if (firstLetterOfName.toUpperCase() === "A" || firstLetterOfName.toUpperCase() === "E" || firstLetterOfName.toUpperCase() === "I" || firstLetterOfName.toUpperCase() === "O" || firstLetterOfName.toUpperCase() === "U") {  // Conditional expression to execute code if first letter of name is a vowel.
+            alert("Hello " + entName + "\nYour name is " + parseInt(entName.length - 1) + " letters long excluding the space." + "\nYour name begins with a vowel which is the letter " + "'" + firstLetterOfName.toUpperCase() + "'" + "\nThe last letter of your name is " + "'" + lastLetterOfName.toLowerCase() + "'");
+        }
+        else { // Else expression to execute code if first letter is a consonant or not a vowel. 
+            alert("Hello " + entName + "\nYour name is " + parseInt(entName.length - 1) + " letters long excluding the space." + "\nYour name begins with a consonant which is the letter " + "'" + firstLetterOfName.toUpperCase() + "'" + "\nThe last letter of your name is " + "'" + lastLetterOfName.toLowerCase() + "'");
+        }
+
+    </script>
+</ol>
+</body>
+
+</html>
