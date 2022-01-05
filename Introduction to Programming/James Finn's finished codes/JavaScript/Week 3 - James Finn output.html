@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>First JavaScript 1 Coding</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: item;
+        }
+
+        ol>li {
+            counter-increment: item;
+            margin-bottom: 5px;
+        }
+
+        ol>li:before {
+            margin-right: 10px;
+            content: counter(item);
+            background: crimson;
+            border-radius: 100%;
+            color: white;
+            width: 1.3em;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Code 1 COMPLETE</h1>
+    <p>Use <code>console.log()</code> to output the results of the below questions unless asked to alert them
+        specifically. Feel free to comment out completed questions if the amount of <code>console.logs()</code> takes up
+        too much space in the console window.</p>
+
+    <ol>
+        <li>Calculate the sum of the following numbers 15, 12, 32, 8, 19, 22, 20 and 7.</li>
+        <li>Calculate the average/mean of all the above numbers.</li>
+
+        <br>
+
+        <li>Convert 10 Canadian dollars to USD</li>
+        <li>Convert 50 KG to POUNDS.</li>
+        <li>Convert 100 POUNDS to KG.</li>
+        <li>Convert 2.5 Hours to Seconds.</li>
+        <li>Convert 3600 Seconds to Hours.</li>
+
+        <p>For the rest use a prompt to input the value that needs to be converted. Use <code>parseInt()</code> to
+            insure the prompt is converted to a number for your calculations.</p>
+
+        <li>Convert Fahrenheit to degrees Celsius.</li>
+        <li>Convert degrees Celsius to Fahrenheit.</li>
+        <li>Calculate the year a person was born based on their age.</li>
+        <li>--> Extend the above to make it more accurate by checking if the user has had their birthday this year.</li>
+
+        <br>
+
+        <li>Create variables separately for your first and last name and then display them in an alert. Do not use
+            prompts for this.</li>
+        <li>--> Extend the above to include a space between them.</li>
+        <li>Use three Prompts to ask the user for a type of fruit, the cost of the fruit and the currency to use. Then
+            show an alert that displays "Apples cost in total $5" if that's what was inputted.</li>
+        <li>Use four prompts to ask the user what their hobbies are. When that is done display an alert that says "I
+            like the following hobbies: hobby1, hobby2, hobby3 and hobby4.". Make sure to include the commas, the "and"
+            and the period.</li>
+
+        <br>
+
+        <li>Create a system which checks how much annual salary a user makes and then alerts the user whether they are
+            in the low, medium or high tax bracket. The brackets are as follows:
+            <ul>
+                <li>Low Bracket - Less than 20,000,</li>
+                <li>Medium Bracket - Between 35,000 and 20,000 inclusive</li>
+                <li>High Bracket - Above 35,000</li>
+            </ul>
+        </li>
+        <li>Extend the above to calculate the tax to be deducted from the user's salary and display this info in another
+            alert. The tax rates for each bracket are as follows and need only apply to the user's entire income e.g.
+            high income earners should have 30% tax taken from their entire annual salary:
+            <ul>
+                <li>Low Bracket - 10% tax</li>
+                <li>Medium Bracket - 20% tax</li>
+                <li>High Bracket - 30% tax</li>
+            </ul>
+        </li>
+        <li>Further extend the above so that only a single alert is displayed. It should read "You are in the Medium Tax
+            Bracket. Total Tax = tax. Total Net = salary - tax".
+        </li>
+    </ol>
+
+    <script>
+
+        // ======================
+        // Doing Maths/Arithmetic
+        // ======================    
+
+        // In what order do math operations take place? For instance in this scenario
+        // is the answer 18 or 2? Do we perform the multiply or division first?
+        // 30 / 5 x 3
+
+        // For situations like these, math relies on BOMDAS or BODMAS or BEDMAS
+        // https://www.mathsisfun.com/operation-order-bodmas.html
+        // Brackets, 
+        // => Orders (Powers, square roots) sometimes referred to as Exponents too, 
+        // = => Division/Multiple (left-to-right)
+        // = = => Addition/Subtraction (left-to-right)
+
+        //============= Calculate Numbers
+
+        // Total numbers
+        //alert(15 + 12 + 32 + 8 + 19 + 22 + 20 + 7);
+
+        // Average/Mean numbers
+        //alert((15 + 12 + 32 + 8 + 19 + 22 + 20 + 7) / 8);
+
+
+        //============= Currency Conversion
+        /* 
+        const myAmount = prompt("How much CAD would you like to convert to USD?");
+        const rate = 0.77; 
+        alert(myAmount * rate);
+        */
+
+
+        //============= Convert KG to Pounds
+        const kg = 50;
+        console.log(kg * 2.2);
+
+        const lbs = 100;
+        console.log(lbs / 2.2);
+
+
+        //============= Convert Hours to Seconds
+        /* 
+        const hour = prompt("Type in a unit of hour");
+        alert(hour * 60 * 60);
+
+        const seconds = prompt("Type in number of seconds");
+        alert((seconds / 60)/60);
+        */
+
+
+        //============= Fahrenheit to Celsius Conversion
+        //const tempCelsius = parseFloat(prompt("How hot is it in Celsius?"));
+        //alert((tempCelsius * 9)/5 + 32);
+
+        // let tempFahrenheit = prompt("How hot is it in Fahrenheit?");
+        // tempFahrenheit = parseFloat(tempFahrenheit);
+        // alert(((tempFahrenheit - 32)*5) / 9);
+
+
+
+
+        //============= Year of your birth
+        /* 
+        const myAge = prompt("How old are you?");
+        const birthdayThisYear = confirm("Have you had your birthday this year?\n OK = YES, Cancel = NO");
+
+        if (birthdayThisYear){
+            alert(2021 - myAge);
+        }
+        else {
+            alert(2020 - myAge);
+        }
+        */
+
+
+        // =====================
+        // Concatenating Strings
+        // =====================    
+
+        //============= First Name / Last Name
+
+        /* 
+        const firstName = "James";   
+        const lastName = "Finn";   
+        alert(firstName + " " + lastName);
+        */
+
+        /* 
+        // Must use different variable names here than above
+        const fName = prompt("Type in First Name");
+        const lName = prompt("Type in Last Name");
+        alert(fName + " " + lName);
+        */
+
+        //============= Fruit Cost
+
+        /* 
+        const message = " cost in total ";
+
+        const fruit = prompt("What fruit do you want?");
+        const cost = parseFloat(prompt("How much does it cost?"));
+        const currency = prompt("Type in currency symbol");
+
+        alert(fruit + message + currency + cost);*/
+
+        //============= Hobbies
+        //
+        /*const m = "I like the following hobbies: ";
+        const h1 = prompt("Type first hobby you like");
+        const h2 = prompt("Type second hobby you like");
+        const h3 = prompt("Type third hobby you like");
+        const h4 = prompt("Type last hobby you like");
+        alert(m + " " + h1 + ", " + h2 + ", " + h3 + " and " + h4 + ".");
+
+        let message = "I like the following hobbies: ";
+        message += prompt("Type first hobby you like") + ", ";
+        message += prompt("Type second hobby you like") + ", ";
+        message += prompt("Type third hobby you like") + " and ";
+        message += prompt("Type last hobby you like") + ".";
+        alert(message);*/
+
+
+
+        // ==========
+        // Simple Tax
+        // ==========
+
+        // Check to see what tax bracket the users falls into
+
+        // Less than 20,000 is lowest bracket - 10%
+        // Between 35,000 and 21,000 is medium bracket - 20%
+        // Above 36,0000 is highest rate - 30%
+
+        const userSalary = parseFloat(prompt("Please type in your annual salary"));
+        let bracket = ""; // Improve efficiency
+        let tax = 0;
+        if (isNaN(userSalary)) {
+            alert("Error");
+        }
+        else {
+            if (userSalary < 20000) {
+                // Less than 20,000 is lowest bracket - 10%
+                tax = userSalary * 0.1;
+                bracket = "Lowest";
+            }
+            else if (userSalary >= 20000 && userSalary <= 36000) {
+                tax = userSalary * 0.2;
+                bracket = "Medium";
+            }
+            else {
+                tax = userSalary * 0.3;
+                bracket = "Highest";
+            }
+            alert(bracket + " Bracket Tax = " + tax + " Net = " + (userSalary - tax));
+        }
+
+
+
+    </script>
+</body>
+
+</html>

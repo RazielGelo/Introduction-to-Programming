@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tick Tac Toe</title>
+        <style>
+            body {
+                align-items: center;
+                display: flex;
+                font-family: helvetica;
+                height: 100vh;
+                justify-content: center;
+                margin: 0;
+                overflow: hidden;
+                padding: 0;
+                width: 100%;
+            }
+            .background-letter {
+                font-family: courier new;
+                font-size: 100px;
+                font-weight: bold;
+                line-height: 0;
+                opacity: .05;
+                position: absolute;
+            }
+            .grid {
+                background: white;
+                display: grid;
+                grid-column-gap: 3.5%;
+                grid-row-gap: 3.5%;
+                grid-template-columns: 31% 31% 31%;
+                grid-template-rows: 31% 31% 31%;
+                height: 360px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 360px;
+                width: 100%;
+                z-index: 99;
+            }
+            .btn {
+                background: #e4a1ff;
+                border: none;
+                color: white;
+                cursor: pointer;
+                font-size: 90px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+                transition: box-shadow .5s;
+            }
+            .btn:hover {
+                border: solid 3px white;
+            }
+            .btn:active {
+                border: solid 6px white;
+            }
+
+            #turn {
+                font-size: 50px;
+                position: fixed;
+                text-align: center;
+                top: 50%;
+                margin-top: -300px;
+                z-index: 100;
+            }
+            #reset {
+                border-radius: 6px;
+                border: solid 3px black;
+                top: 50%;
+                margin-top: 280px;
+                cursor: pointer;
+                font-size: 30px;
+                font-weight: bold;
+                padding: 10px 30px;
+                position: fixed;
+                text-align: center;
+                z-index: 100;
+            }
+            #reset:active {
+                font-size: 25px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="turn">X's Turn</h1>
+        <span class="background-letter">X</span>
+
+        <div class="grid">
+            <button class="btn" onClick="btnClick(this)"></button>
+            <button class="btn" onClick="btnClick(this)"></button>
+            <button class="btn" onClick="btnClick(this)"></button>
+
+            <button class="btn" onClick="btnClick(this)"></button>
+            <button class="btn" onClick="btnClick(this)"></button>
+            <button class="btn" onClick="btnClick(this)"></button>
+
+            <button class="btn" onClick="btnClick(this)"></button>
+            <button class="btn" onClick="btnClick(this)"></button>
+            <button class="btn" onClick="btnClick(this)"></button>
+        </div>
+
+        <button id="reset" onClick="reset()">Reset</button>
+
+        <script>
+        	// ==============
+        	// Tic Tac Toe
+        	// ==============
+            // Global Variables
+            let bgCount = 0;
+            let isXTurn = true;
+            // Grabbing HTML components
+            const BODY = document.getElementsByTagName("body")[0];
+            const ALL_BTNS = document.getElementsByClassName("btn");
+             
+            // Background X and Os
+            // ===================
+            // Randomly return an X or an O
+            function randomLetter() {
+                const letters = ["X", "O"];
+                return letters[Math.floor(Math.random() * (1 - 0 + 1) + 0)];
+            } 
+            
+            // Add Background Letters to the background
+            for (let h=0; h<window.innerHeight; h+=70) {
+                for (let w=0; w<window.innerWidth; w+=70) {
+                    BODY.innerHTML += "<span class='background-letter' style='left:"+w+"px; top:"+h+"px;'>"+randomLetter()+"</span>";
+                }
+            }
+
+            // Grab all the background letters HTML after
+            // they have been created and added to BODY
+            const ALL_LETTERS = document.getElementsByClassName("background-letter");
+            
+            // Interval to change each letter every few miniseconds
+            const changeLetters = setInterval(function() {
+                if (bgCount >= ALL_LETTERS.length) {
+                    bgCount = 0;
+                }
+                if (ALL_LETTERS[bgCount].innerText === "X") {
+                    ALL_LETTERS[bgCount].innerText = "O";
+                }
+                else {
+                    ALL_LETTERS[bgCount].innerText = "X";
+                }
+                
+                bgCount += 1;
+            }, 60);
+            // ====================
+
+           
+            // Reset game and HTML elements
+            function reset() {
+                // Get rid of X and O in game buttons
+                for (let b of ALL_BTNS) {
+                    b.innerText = "";
+                    b.style = "";
+                }
+                // Set the turn to X
+                isXTurn = true;
+                const turn = document.getElementById("turn");
+                turn.innerText = "X's Turn";
+            }
+
+            
+            
+            // User clicks game button
+            // btn = HTML button that was clicked
+            function btnClick(btn) {
+                const turn = document.getElementById("turn");
+        
+                // Check who's turn it is and add correct character
+                if (isXTurn === true) {
+                    btn.innerText = "X";
+                    turn.innerText = "O's Turn";
+                }
+                else {
+                    btn.innerText = "O";
+                    turn.innerText = "X's Turn";
+                }
+                // Change who's turn it is
+                isXTurn = !isXTurn;
+
+                // Get all values in tick tac toe board
+                const results = getAllValues();
+                // Check to see if game has been won
+                if (checkWinner2(results) !== null) {
+                    // Game has been won. Alert user
+                    turn.innerText = checkWinner2(results);
+                    effect3D();
+                }
+            }
+
+            // Grab all values from Tick Tac Toe board
+            // returns array of all game characters
+            function getAllValues() {
+                // Convert all characters from buttons into array of strings
+                const allBtnsText = Array.from(ALL_BTNS);
+                const allResults = allBtnsText.map(btn => {
+                    return btn.innerText;
+                });
+                return allResults;
+            }
+
+            // Check to see if game has been won
+            // arr = arr of strings showing all game characters
+            // returns "string" if winner and null if not
+            function checkWinner2(arr) {
+                const allGameArrs = []
+                // Rows
+                for (let r=0; r<=6; r+=3) {
+                    const rows = [];
+                    for (let c=0; c<3; c+=1) {
+                        rows.push(arr[r + c]);
+                    }
+                    allGameArrs.push(rows);
+                }
+
+                // Columns
+                for (let r=0; r<3; r+=1) {
+                    const cols = [];
+                    for (let c=0; c<=6; c+=3) {
+                        cols.push(arr[r + c]);
+                    }
+                    allGameArrs.push(cols);
+                }
+
+                // Diagonals
+                allGameArrs.push([arr[0], arr[4], arr[8]]);
+                allGameArrs.push([arr[2], arr[4], arr[6]]);
+
+                // Check each array in multiarray to see if
+                // they contain the same element that isn't empty
+                for (let arr=0; arr<allGameArrs.length; arr+=1) {
+                    if (allGameArrs[arr][0] === allGameArrs[arr][1] && 
+                        allGameArrs[arr][1] === allGameArrs[arr][2] &&
+                        allGameArrs[arr][0] !== "") {
+                        return "The Winner is " + allGameArrs[arr][0];
+                    }
+                }
+                return null;
+            }
+
+            function checkWinner(arr) {
+                let winner = "";
+                if (arr[0] === arr[1] && 
+                    arr[1] === arr[2] && 
+                    arr[0] !== "") {
+                    winner = arr[0];
+                }
+                else if (arr[3] === arr[4] && 
+                    arr[4] === arr[5] && 
+                    arr[3] !== "") {
+                    winner = arr[3];
+                }
+                else if (arr[6] === arr[7] && 
+                    arr[7] === arr[8] && 
+                    arr[6] !== "") {
+                    winner = arr[6];
+                }
+
+                else if (arr[0] === arr[3] && 
+                    arr[3] === arr[6] && 
+                    arr[0] !== "") {
+                    winner = arr[0];
+                }
+                else if (arr[1] === arr[4] && 
+                    arr[4] === arr[7] && 
+                    arr[1] !== "") {
+                    winner = arr[1];
+                }
+                else if (arr[2] === arr[5] && 
+                    arr[5] === arr[8] && 
+                    arr[2] !== "") {
+                    winner = arr[2];
+                }
+
+                else if (arr[0] === arr[4] && 
+                    arr[4] === arr[8] && 
+                    arr[0] !== "") {
+                    winner = arr[0];
+                }
+                else if (arr[2] === arr[4] && 
+                    arr[4] === arr[6] && 
+                    arr[2] !== "") {
+                    winner = arr[2];
+                }
+
+                if (winner !== "") {
+                    return "The Winner is " + winner;
+                }
+                else {
+                    return null;
+                }
+            }
+
+
+            // Win animation
+            // ===============
+            function effect3D() {
+                for (let i=0; i<ALL_BTNS.length; i+=1) {
+                    let c = i+1;
+                    let css = 'box-shadow:';
+                    for (let s=0; s<500; s+=2) {
+                        css += s+"px "+s+"px "+"0 #"+c+""+c+""+c+",";
+                    }
+                    css = css.slice(0, css.length-1);
+                    css += ";";
+                    ALL_BTNS[i].style = css;
+                }
+            }
+            
+        </script>
+    </body>
+</html>

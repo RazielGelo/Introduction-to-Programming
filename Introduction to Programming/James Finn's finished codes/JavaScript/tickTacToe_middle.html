@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tick Tac Toe</title>
+        <style>
+            body {
+                align-items: center;
+                display: flex;
+                font-family: helvetica;
+                height: 100vh;
+                justify-content: center;
+                margin: 0;
+                overflow: hidden;
+                padding: 0;
+                width: 100%;
+            }
+            .background-letter {
+                font-family: courier new;
+                font-size: 100px;
+                font-weight: bold;
+                line-height: 0;
+                opacity: .15;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .grid {
+                background: white;
+                display: grid;
+                grid-column-gap: 3.5%;
+                grid-row-gap: 3.5%;
+                grid-template-columns: 31% 31% 31%;
+                grid-template-rows: 31% 31% 31%;
+                height: 360px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 360px;
+                width: 100%;
+                z-index: 99;
+            }
+            .btn {
+                background: #e4a1ff;
+                border: none;
+                color: white;
+                cursor: pointer;
+                font-size: 90px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+                transition: box-shadow .5s;
+            }
+            .btn:hover {
+                border: solid 3px white;
+            }
+            .btn:active {
+                border: solid 6px white;
+            }
+
+            #turn {
+                font-size: 50px;
+                position: fixed;
+                text-align: center;
+                top: 50%;
+                margin-top: -280px;
+                z-index: 100;
+            }
+            #reset {
+                border-radius: 6px;
+                border: solid 3px black;
+                cursor: pointer;
+                font-size: 30px;
+                font-weight: bold;
+                margin-top: 230px;
+                padding: 10px 30px;
+                position: fixed;
+                text-align: center;
+                top: 50%;
+                z-index: 100;
+            }
+            #reset:active {
+                font-size: 25px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="turn">X's Turn</h1>
+        <!-- <span class="background-letter">X</span> -->
+
+        <div class="grid">
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+        </div>
+
+        <button id="reset">Reset</button>
+
+        <script>
+        	// ==============
+        	// Tick Tac Toe
+        	// ==============
+            // Global Variables
+             
+            // Test game arrays
+            const test1 = [ "X", "O", "X", "O", "X", "", "O", "", "X" ]; // X won
+            const test2 = [ "O", "O", "X", "O", "", "", "O", "X", "X" ]; // O won
+            const test3 = [ "X", "O", "X", "X", "O", "", "O", "", "X" ]; // No win
+            
+
+            // Grabbing HTML components
+            const BODY = document.getElementsByTagName("body")[0];
+            const ALL_BTNS = document.getElementsByClassName("btn");
+             
+            // Creating Background Xs and Os
+            // =============================
+            // Create a background X
+            // left = number position of left coordinate
+            // top = number position of top coordinate
+            function createBackgroundLetter(left, top) {
+                const xO = returnRandomXO();
+                let xHtml = '<span class="background-letter" style="left:'+left+'px; top:'+top+'px">'+xO+'</span>';
+
+                // Insert the new span element into the body of
+                // the webpage
+                BODY.innerHTML += xHtml;
+            }
+
+            function returnRandomXO() {
+                const bgLetters = ["X", "O"];
+                const randomNumber = Math.floor(Math.random() * 2);
+                return bgLetters[randomNumber];
+            }
+
+            // Loop over the width of the web page
+            for (let left=0; left<window.innerWidth; left+=70) {
+                // Loop over the height of the webpage
+                for (let top=0; top<window.innerHeight; top+=70) {
+                    // Call the createBackgroundX function and pass
+                    // in 2 parameters: 1 for the left position 
+                    // and 1 for the top/height position
+                    createBackgroundLetter(left, top);
+                }
+            }
+
+            // Grab all the Background Letter HTML spans and put them in an array
+            const ALL_LETTERS = document.getElementsByClassName("background-letter");
+            let bgCount = 0;    // keeps track of each letter being grabbed
+
+            // Create interval that will change background
+            // letter every 60 miliseconds
+            const changeLetterInterval = setInterval(function() {
+                // Reset bgCount back to 0 if it exceeds the
+                // number of bg letters on the webpage
+                if (bgCount >= ALL_LETTERS.length) {
+                    bgCount = 0;
+                }
+
+                if (ALL_LETTERS[bgCount].innerText === "X") {
+                    ALL_LETTERS[bgCount].innerText = "O";
+                }
+                else {
+                    ALL_LETTERS[bgCount].innerText = "X";
+                }
+
+                // Increase bgCount by one after every interval
+                bgCount += 1;
+            }, 60);
+
+            // =============================
+            
+
+            
+            
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<USERNAME> Resume <CURRENTYEAR>
+<JOBTITLE>
+=====================================================
+
+I am an enthusiastic and hard-working programmer that 
+has recently graduated from the VCC Computer Systems
+Technology diploma program. I have <YEARS> years experience 
+writing code.
+
+Programming Languages

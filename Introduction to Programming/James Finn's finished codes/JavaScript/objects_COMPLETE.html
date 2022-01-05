@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Objects</h1>
+        <script>
+        	// ==============
+        	// Object Basics
+        	// ==============
+            
+            // Creating object, the literal way
+            const personObj = {
+                fName: "James",
+                lName: "Finn",
+                yearOfBirth: 2000,
+                siblings: ["Bob", "Mary"]
+            };
+
+            // console.log(personObj);
+
+            // Accessing object Properties
+            // console.log( personObj["fName"] );
+            // console.log( personObj.fName );
+            // console.log( personObj["siblings"]);
+
+            // Update or Add new Properties
+            personObj["countryOfBirth"] = "USA";
+            personObj["lName"] = "Murphy";
+
+            let allSiblings = personObj["siblings"];
+            allSiblings.push("Mark");
+            personObj["siblings"] = allSiblings;
+
+            personObj["siblings"].push("Ken");
+
+            // Looping through Objects
+            for (let key in personObj) {
+                // console.log(key + " = " + personObj[key]);
+            }
+
+            // Useful Object Methods
+            // console.log(personObj.hasOwnProperty("fName")); // returns true
+            // console.log(personObj.hasOwnProperty("xxxx")); // return false
+        </script>
+
+        <ol>
+        	<li><em>Fix Object Errors</em>
+                <br/>
+                Below is an object literal created with mistakes. Fix the errors and console.log the object. And then separately console.log each property on its own.
+            </li>
+            <script>
+            	let qNum = 1;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const favouriteObj = {
+            		colour: "brown",
+            		movie: "Gladiator",
+            		song: "Oops I did it again",
+            		food: "Hot dog",
+            		number: 7
+            	}
+            	console.log(favouriteObj);
+            	console.log(favouriteObj["colour"]);
+            	console.log(favouriteObj["movie"]);
+            	console.log(favouriteObj["song"]);
+            	console.log(favouriteObj["food"]);
+            	console.log(favouriteObj["number"]);
+            </script>
+
+
+            <li><em>Create your own Object Literal</em>
+                <br/>
+                Create your own object called family that contains at least 3 properties. Have these properties represent some of your family members like father or sister etc., and give them names for their values. Console.log the entire object. Then for each family member, console.log "My father's name is X".
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const familyObj = {
+            		father: "Bob Finn",
+            		mother: "Mary Finn",
+            		sister: "Samantha Finn"
+            	}
+            	console.log(familyObj);
+            	console.log("My father's name is  " + familyObj["father"]);
+            	console.log("My mother's name is  " + familyObj["mother"]);
+            	console.log("My sister's name is  " + familyObj["sister"]);
+            </script>
+
+
+             <li><em>Country Capitals Object</em>
+                <br/>
+                Create an object with 4 properties. The keys of these properties should be Canada, USA, Mexico, UK. Make the values of these properties be their respective capital cities. Console.log the entire object.
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const countryObj = {
+            		canada: "ottawa",
+            		usa: "washington D.C.",
+            		mexico: "mexico city",
+            		uk: "london"
+            	}
+            	console.log(countryObj);
+            </script>
+
+
+            <li><em>Country Capitals Object MODIFIED</em>
+                <br/>
+                Using the object you already created, change the capital of Canada to Vancouver. Also add 2 new countries (France and Italy) and their respective capital cities. Console.log the entire object and see the changes.
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	countryObj["canada"] = "vancouver";
+            	countryObj["italy"] = "rome";
+            	countryObj["france"] = "paris";
+
+            	console.log(countryObj);
+            </script>
+
+
+            <li><em>Objects Don't have to Contain the same type of Data</em>
+                <br/>
+                Create an object called myself and have it contain the following properties along with corresponding values.<br>
+                name, yearOfBirth, address, hobbies (have at least 5 hobbies), isEnrolledInVCC
+                <br>Make sure to use a suitable data type for each property. Console.log the entire object and see if the object is correct.
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const myself = {
+            		name: "James Finn",
+            		yearOfBirth: 1960,
+            		address: "Vancouver", 
+            		hobbies: ["computers", "video games", "volleyball", "tennis", "frisbee"], 
+            		isEnrolledInVCC: true
+            	}
+
+            	console.log(myself);
+            </script>
+
+
+            <li><em>Objects Don't have to Contain the same type of Data EXTENDED</em>
+                <br/>
+                Using the myself object you created above, write code that checks to see if isEnrolledInVCC is true. If it is console.log "I am a student".
+                <br><br>
+                Check to see if the object <strong>has a property</strong> called "hobbies". You may need to look up an inbuilt JavaScript method that does this for you. If it does, console.log "My hobbies are A, B, C, D, E."
+                <br><br>
+                Check to see if the object has a property called "occupation". If it does, console.log "My occupation is X.". If it doesn't then add occupation as a property to the object.
+                <br><br>
+                Finally console.log the entire object once again.
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	if (myself.isEnrolledInVCC === true) {
+            		console.log("I am a student");
+            	}
+
+            	if (myself.hasOwnProperty("hobbies") === true) {
+            		console.log("My hobbies are " + myself["hobbies"].join(", "));
+            	}
+
+            	if (myself.hasOwnProperty("occupation") === true) {
+            		console.log("My occupation is " + myself["occupation"]);
+            	}
+            	else {
+            		myself["occupation"] === "teacher";
+            	}
+
+            	console.log(myself);
+            </script>
+
+
+            <li><em>Objects Don't have to Contain the same type of Data EXTENDED LOOP through Object</em>
+                <br/>
+                Using the myself object you created above, in a single console.log print out each property key beside their corresponding value like so:<br>
+                "key = value<br>
+                 key = value<br>
+                 key = value"<br><br>
+                Use a for in loop to do this.
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	let myselfText = "";
+            	for (let key in myself) {
+            		myselfText += key + " = " + myself[key] + "\n";
+            	}
+
+            	console.log(myselfText);
+            </script>
+
+
+            <li><em>Count Elements in Array, Keep Track with Object</em>
+                <br/>
+                The array below contains either "A", "B" and "C" in different amounts. Use the lettersObj object to get the total amount of each letter and in a single console.log print<br><br>
+                "A = x<br>
+                B = x<br>
+                C = x"<br><br>
+                where x is the number of times the letter appears in the array.
+            </li>
+            <script>
+            	qNum++;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const lettersArr = ["A","B","B","C","A","A","C","B","B","C","A","A"];
+            	const lettersObj = {
+            		"A": 0,
+            		"B": 0,
+            		"C": 0
+            	};
+
+            	for (let letter of lettersArr) {
+            		lettersObj[ letter ] += 1;
+            	}
+
+            	console.log(lettersObj);
+
+            	let lettersText = "";
+            	for (let key in lettersObj) {
+            		lettersText += key + " = " + lettersObj[key] + "\n";
+            	}
+
+            	console.log(lettersText);
+            </script>
+
+        </ol>
+    </body>
+</html>

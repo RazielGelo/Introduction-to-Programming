@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First JavaScript Coding 2</title>
+
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            h1 {
+                text-align: center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 15px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+    	<h1>JavaScript Code 2</h1>
+        <p>Use <code>console.log()</code> to output the results of the below questions unless asked to alert them specifically. Feel free to comment out completed questions if the amount of <code>console.logs()</code> takes up too much space in the console window.</p>
+        <h3>Make sure to comment your code!</h3>
+
+        <ol>
+            <li>Create a program that uses a <code>switch statement</code> and asks the user to type in a season. Depending on what season is mentioned, in a single alert list off all the months in that season. If no season is mentioned alert the user "No such season exists".</li>
+            <li>--> Extend the above so that if the user uses different letter casing (capital letters or not) it would still list off the correct months.</li>
+
+            <li>Create a boole called liveInCanada and set it to be either true or false. Do not use a confirm. Create a variable called primeMinister and use a ternary operator to decide its value. The value will be "Justin Trudeau" if liveInCanada is true and "Someone else" if it is false. Lastly make an alert that says "The prime minister of your country is X" where X is the variable primeMinister.</li>
+
+            <li>Create two boolean variables called passport and suitcase. Do not use a confirm. They can be either true or false. Write a script that checks to see if these are both true. If not then alert "You are not going on holiday because you are missing something important". If both are true then ask the user what country they would like to visit. If they type either Canada, USA or Mexico (regardless of casing) alert "You are going on holiday in North America". If they type anything else alert "Enjoy your holiday in X" where X is what they typed.</li>
+
+            <li>Ask the user to type their name into a prompt. Check to see if the first letter of their name is capitalized. If it is, console.log "Your name begins with X which is capitalized" where X is their first letter capitalized. If it doesn't, console.log "Your name begins with x which is in lower case".</li>
+
+            <li>Create a Rock, Paper, Scissors game where the user is asked to type in one of those objects. The code below randomly chooses between the three objects when the web page loads and acts as the computer's choice. Copy this code and use it to check if the user has won, lost or tied their game. Alert the appropriate outcome like so "Computer chose Rock. User chose Paper. Win".<br>
+                <code>const computerChoice = ["Rock", "Paper", "Scissors"][Math.floor(Math.random() * (3))];</code>
+            </li>
+
+        </ol>
+        <script>
+            // Write your code here
+            
+            // Question 1 & 2
+            const season = prompt("What season is it?").toLowerCase();
+            switch( season ) {  // The expression is evaluated inside the brackets ()
+                case "summer":
+                    alert("June, July, August");
+                    break;  
+                case "autumn":
+                    alert("September, October, November");
+                    break;
+                case "winter":
+                    alert("December, January, February");
+                    break;
+                case "spring":
+                    alert("March, April, May");
+                    break;
+                default:
+                    alert("No such season exists");
+            }
+
+
+            // Question 3
+            const liveInCanada = true;
+            const primeMinister = (liveInCanada) ? "Justin Trudeau" : "Someone else";
+            alert("The prime minister of your country is " + primeMinister);
+            
+
+            // Question 4
+            const passport = true;
+            const suitcase = true;
+
+            if (passport && suitcase) {
+                const country = prompt("Type a country").toUpperCase();
+
+                if (country === "USA" || country === "CANADA" || country === "MEXICO") {
+                    alert("You are going on holiday in North America");
+                }
+                else {
+                    alert("Enjoy your holiday in " + country);
+                }
+            }
+            else {
+                alert("You are missing either your passport or suitcase!");
+            }
+
+
+            // Question 5
+            const userName = prompt("What is your name?");
+            const firstLetter = userName.charAt(0);
+            const firstLetterCap = firstLetter.toUpperCase();
+            if (firstLetter === firstLetterCap) {
+                console.log("Your name begins with " + firstLetter.toUpperCase() + " which is capitalized.");
+            }
+            else {
+                console.log("Your name begins with " + firstLetter + " which is in lower case.");
+            }
+
+
+            // Question 6
+            const pC = prompt("Choose Rock, Paper or Scissors");
+            const cC = ["rock", "paper", "scissors"][Math.floor(Math.random() * (3))];
+            let outcome = "";
+
+            if (pC == cC) outcome = "Tie";
+
+            else if (pC === "rock" && cC === "paper")     outcome = "Lose";
+            else if (pC === "rock" && cC === "scissors")  outcome = "Win";
+
+            else if (pC === "scissors" && cC === "paper") outcome = "Win";
+            else if (pC === "scissors" && cC === "rock")  outcome = "Lose";
+
+            else if (pC === "paper" && cC === "scissors") outcome = "Lose";
+            else if (pC === "paper" && cC === "rock")     outcome = "Win";
+
+            else outcome = "ERROR";
+
+            alert("Computer chose " + cC + ". Player chose " + pC + ". " + outcome);
+
+        </script>
+    </body>
+</html>

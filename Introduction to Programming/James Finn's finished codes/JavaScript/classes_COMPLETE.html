@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Classes</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Classes</h1>
+        <script>
+        	// ==============
+        	// Class Basics
+        	// ==============
+            
+        </script>
+
+        <ol>
+        	<li><em>Fix Class Errors</em>
+                <br/>
+                Below is a class that creates objects created with mistakes. Fix the errors, create an object from the class and console.log the object. 
+            </li>
+            <script>
+            	let qNum = 1; // 1
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	class TeenageMutantNinjaTurtles {
+				  	constructor(name, weapon) {
+				    	this.name = name;
+				    	this.weapon = weapon;
+				  	}
+				  	sayCowabunga() {
+				  		console.log(this.name + " says Cowabunga");
+				  	}
+				}
+
+				const leonardo = new TeenageMutantNinjaTurtles("Leonardo", "Sword");
+
+				console.log(leonardo);
+				leonardo.sayCowabunga();
+            	
+            </script>
+
+
+            <li><em>Create a Class that will produce Animal Object</em>
+                <br/>
+                Below you will find an object literal. Create a class that will create an object like this and use it to create an object called snake, bird and horse. Change the values of the properties for each object of course and console.log each object. Also test out each object's method.
+            </li>
+            <script>
+            	qNum++; // 2
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const dog = {
+            		name: "dog",
+            		type: "mammal",
+            		numberOfLegs: 4,
+            		animalSays: function(sound) {
+            			console.log(this.name + " says " + sound);
+            		}
+            	}
+
+            	class Animal {
+            		constructor(name, type, numberOfLegs) {
+            			this.name = name;
+            			this.type = type; 
+            			this.numberOfLegs = numberOfLegs;
+            		}
+            		animalSays(sound) {
+            			console.log(this.name + " says " + sound);
+            		}
+            	}
+
+            	const snake = new Animal("snake", "reptile", 0);
+            	const bird = new Animal("bird", "bird", 2);
+            	const horse = new Animal("horse", "mammal", 4);
+
+            	console.log(snake);
+            	console.log(bird);
+            	console.log(horse);
+
+            </script>
+
+
+            <li><em>Create your own Class and Objects Students</em>
+                <br/>
+                Create your own class called Student. This class should produce student objects that contain the following data: name, age and subjects being taken by the student. Subjects should be an array with at least 3 items in it. Use this class to create three student objects and console log each one.
+            </li>
+            <script>
+            	qNum++; // 3
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	class Student {
+            		constructor(name, age, subjects) {
+            			this.name = name;
+            			this.age = age; 
+            			this.subjects = subjects;
+            		}
+            	}
+
+            	const james = new Student("James", 21, ["Math", "English", "French"]);
+            	const mary = new Student("Mary", 41, ["Math", "PE", "Art"]);
+            	const sue = new Student("Sue", 29, ["Science", "Business", "French"]);
+
+            	console.log(james);
+            	console.log(sue);
+            	console.log(mary);
+            </script>
+
+
+            <li><em>Create your own Class and Objects Students EXTENDED</em>
+                <br/>
+                Previously you created a student class. I want you to do the same however this time instead of using an array of three subjects, I want you to use on object containing three subjects as properties and their values should be numbers representing the student's grade in that subject. You should copy and paste your previous work but class the new class StudentExtra. Finally you should add a method to this class that console.logs "Student X's results are as follows: Math A, French B, Science B+". Create three new objects from this class and call the method for each one.
+            </li>
+            <script>
+            	qNum++; // 4
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	class StudentExtra {
+            		constructor(name, age, subjects) {
+            			this.name = name;
+            			this.age = age;
+            			this.subjects = subjects;
+            		}
+            		showGrades() {
+            			let results = "\n";
+            			for (let subject in this.subjects) {
+            				results += `${subject} ${this.subjects[subject]}\n`;
+            			}
+
+            			console.log(`Student ${this.name}'s results are as follows: ${results}`);
+            		}
+            	}
+
+            	const james1 = new StudentExtra("James", 21, {
+            		"Math": "A", 
+            		"English": "C", 
+            		"French": "B"
+            	});
+            	const mary1 = new StudentExtra("Mary", 41, {
+            		"Math": "D", 
+            		"PE": "B+", 
+            		"Art": "A-"
+            	});
+            	const sue1 = new StudentExtra("Sue", 29, {
+            		"Science": "C-", 
+            		"Business": "B", 
+            		"French": "B+"
+            	});
+
+            	james1.showGrades();
+            	mary1.showGrades();
+            	sue1.showGrades();
+            </script>
+
+
+            <li><em>Country Class to Object to JSON</em>
+                <br/>
+                Below you will find three arrays containing country names, populations and capital cities all of which are lined up correctly. Create a Class that will create objects for each country using the name, population and capital city as properties. Store all 5 of these objects in an array. Then JSON stringify the array and console.log the JSON data.
+            </li>
+            <script>
+            	qNum++; // 5
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+            	const countries = ["Ireland", "China", "Hungary", "Thailand", "Philippines"];
+            	const populations = [5000000, 1200000000, 9750000, 69800000, 109600000];
+            	const capitals = ["Dublin", "Beijing", "Budapest", "Bangkok", "Manila"];
+
+            	class CountryClass {
+            		constructor(name, population, capital) {
+            			this.name = name;
+            			this.population = population;
+            			this.capital = capital;
+            		}
+            	}
+
+            	const allCountryObjects = [];
+            	for (let i=0; i<countries.length; i+=1) {
+            		const countryObject = new CountryClass(countries[i], populations[i], capitals[i]);
+            		allCountryObjects.push(countryObject);
+            	}
+
+            	console.log(allCountryObjects);
+            	console.log(JSON.stringify(allCountryObjects));
+            </script>
+        </ol>
+    </body>
+</html>

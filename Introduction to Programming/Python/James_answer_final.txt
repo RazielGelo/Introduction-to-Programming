@@ -1,0 +1,150 @@
+1. What is happening here?
+	enthropyRate = 7.865
+	
+	Variable is created and assigned.
+
+2. In terms of computer science, what does "scope" mean?
+What type of scope do functions and variables have in Python?
+
+A variable is only available from inside the region it is created. This is called scope.
+
+Local Scope:
+A variable created inside a function belongs to the local scope of that function, and can only be used inside that function.
+
+Function Inside Function:
+A variable x is not available outside the function, but it is available for any function inside the function:
+
+Global Scope:
+A variable created in the main body of the Python code is a global variable and belongs to the global scope.
+Global variables are available from within any scope, global and local.
+
+3. What is a global variable and how can you make one?
+Variables that are created outside of a function are known as global variables.
+Global variables can be used by everyone, both inside of functions and outside.
+If you need to create a global variable, but are stuck in the local scope, you can use the global keyword.
+The global keyword makes the variable global.
+
+4. What will be printed in the paragraph?
+	name = "Thomas"
+	name = "Lucy"
+	print("name")
+	
+	name
+
+5. What will be printed in the below statement?
+	print( birthMonth )
+	birthMonth = "January"
+	birthMonth = "December"
+	
+	NameError: name 'birthMonth' is not defined
+
+6. Where is the best place to import modules in your code and why?
+Imports are always put at the top of the file.
+it makes it much easier to tell what function or object came from what module.
+
+7. What is wrong with the below import code of a local python script?
+	import my_file.py
+	
+	We don't need to .py extention.
+
+8. Name as many Python collection variables as you can.
+	list, tuple, set, dictionary
+
+9. When creating a dictionary in Python which brackets would you use? (),[],{},<>
+	{}
+
+10. When creating a tuple in Python which brackets would you use? (),[],{},<>
+	()
+
+11. When creating a set in Python which brackets would you use? (),[],{},<>
+	{}
+
+12. Which Python collection variable is unchangeable and unordered as of Python 3.7?
+	set
+
+13. What will the value of result be at the end of the below execution?
+	num = 8;
+	result = (5-2)*num/2;
+
+	12
+
+14. What does it mean to say that Python is an interpreted language?
+An interpreter runs through it and does it it's not compiled javascript is the same it's interpreted by the by the browser as well.
+
+15. Which is faster to develop on and which is faster to run: a compiled or interpreted language?
+compiled
+
+16. What does IPOS stand for and what does it describe?
+input, process, output, storage
+
+17. What is wrong with the below conditional statement?
+	for i in range(5):
+	         print(i)
+			 
+it is not a conditional statement it is a loop			 
+
+18. What is wrong with the below code?
+	my_age = 20;
+	if my_age = 20:
+	      print("You are " + my_age)
+		  
+we need to cast my_age into a string str(my_age)
+double equals need to it my_age == 20	
+
+19. Mention some rules about naming variables in Python.
+A variable name must start with a letter or the underscore character.
+A variable name cannot start with a number.
+A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+Variable names are case-sensitive (age, Age and AGE are three different variables)
+
+20. What is a function in Python and how do you declare one?
+The function definition starts with a def keyword followed by the function name and the arguments the function can take. These arguments are within parentheses and there can be any number of arguments including zero. When there is more than one argument, they are separated by a comma.
+
+21. What is a module?
+Modules are simply files with the “. py” extension containing Python code that can be imported inside another Python Program. In simple terms, we can consider a module to be the same as a code library or a file that contains a set of functions that you want to include in your application.
+
+22. What is wrong with the following if statements?
+	if 10>5 && <15:
+		# Do something
+
+We don't use &&
+	
+23. What does a dictionary contain?
+keys and values
+
+24. Point out all the mistakes in the below Python code.
+	text1 = "Hello"
+	Num = 1
+	Print(text1 +" " + num)
+	
+Print should be print, num should be Num, and Num should be casted to string str(Num)	
+
+25. What programming paradigm is known to use recursion?
+Functional programming
+
+26. What programming paradigm is known to use encapsulation?
+Object Oriented Programming
+
+27. What programming paradigm is known to use Classes and objects extensively?
+Object Oriented Programming
+
+28. What programming paradigm is known to use local and global variables?
+Procedural Programming
+
+29. Point out the class attribute, object attribute and method in the below code.
+	class MyClass:
+		blue = "blue"
+		def__init__(self)
+			self.red = "red"
+		def say_hello(self):
+			print('Hello World')
+			
+class attribute is blue 
+object attribute is red
+method is say_hello			
+
+30. What is the value of result in the below code?
+	my_list = [1, 2, 3, 4, 5, 6, 7, 8]
+	result = my_list[2::2]
+
+3,5,7

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Other Functions</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Other Types of Functions & Events</h1>
+
+        <ol>
+        	<li><em>Other Ways of Declaring Functions</em>
+        		<br>
+        		There are other ways of declaring functions as opposed to the way we learned<br>
+        		<code>function myFunc( para ) {<br>
+        		&nbsp;&nbsp;&nbsp;&nbsp;return para<br>
+        		}</code>
+
+        		<script>
+        			// OTHER FUNCTIONS
+                    // Function Statement
+                    console.log( add(1,2) );
+                    function add(num1, num2) {
+                        return num1 + num2;
+                    }
+                    console.log( add(1,1) );
+
+                    // Anonymous Function Expression
+                    // console.log( add2(2,3) );
+                    var add2 = function(num1, num2) {
+                        return num1 + num2;
+                    }
+                    console.log( add2(2,2) );
+
+                    // IIFE Immediately Invoked Function Expression
+                    (function(num1, num2) {
+                        return num1 + num2;
+                    })(3,3);
+
+                    // Arrow Function
+                    // console.log( add3(5,5) );
+                    var add3 = (num1, num2) => {
+                        return num1 + num2;    
+                    }
+                    console.log( add3(4,4) );
+
+                    var add4 = (num1, num2) => num1 + num2;
+                    var add5 = num1 => num1;
+                    var add6 = () => "Hello";
+                    console.log( add4(6,6) );
+
+                    const arr = [1, 2, 3];
+                    const newArr = arr.map((item) => {
+                        return item * 2;
+                    });
+                    const newArr2 = arr.map((i) => i * 3);
+        		</script>
+        	</li>
+
+        	<li><em>Events and Functions</em>
+        		<br>
+        		Functions can be called/executed by an event that happens on a webpage<br><br>
+        		<button onClick="sayHello('James')">Button 1</button>
+        		<button onClick="sayHello('Finn')">Button 2</button>
+        		<button onClick="sayHello('Bob')">Button 3</button>
+        		<button>Button 4</button>
+        		<br><br>
+
+        		<select onChange="sayHello('Select has changed')">
+        			<option value="1">One</option>
+        			<option value="2">Two</option>
+        			<option value="3">Three</option>
+        		</select>
+
+        		<script>
+        			// EVENTS
+        			function sayHello(para) {
+                        alert(para);
+                    }
+        		</script>
+        	</li>
+            
+        </ol>
+    </body>
+</html>
